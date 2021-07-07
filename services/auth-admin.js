@@ -3,11 +3,8 @@ export default function authAdmin({ username, password }) {
 
     fetch("https://vast-scrubland-50324.herokuapp.com/auth", {
         method: "post",
-        mode: "cors",
-
         headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
         },
         body: JSON.stringify(data),
     })
