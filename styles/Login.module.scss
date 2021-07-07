@@ -1,0 +1,35 @@
+.container {
+    min-height: 100vh;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+    label {
+        display: flex;
+        flex-direction: column;
+        color: red;
+    }
+    input {
+        font-size: 14px;
+        padding: 0.5rem 0.2rem;
+        border: 1px solid red;
+    }
+    button {
+        background-color: red;
+        color: #fff;
+        border: 0;
+        padding: 0.5rem 0.2rem;
+        &:hover {
+            cursor: pointer;
+            background-color: black;
+        }
+    }
+}
