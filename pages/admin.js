@@ -1,22 +1,40 @@
-import { Router, useRouter } from "next/dist/client/router";
-import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import EventList from "../components/EventList";
+import EventForm from "../components/EventForm";
+import PostList from "../components/PostList";
+import PostForm from "../components/PostForm";
+import { signOutUserAdmin } from "../firebase/client";
 import useAdmin from "../hooks/useAdmin";
 
 const AdminPage = () => {
     const [admin, loading] = useAdmin();
+
     const router = useRouter();
 
     useEffect(() => {
-        if (!admin && !loading) {
+        if (admin === null && loading === false) {
             router.push("/");
         }
     }, [admin, router, loading]);
+
+    const handleClick = async () => {
+        const result = await signOutUserAdmin();
+        if (result) {
+            router.push("/");
+        }
+    };
 
     return (
         <>
             {!loading && admin && (
                 <div>
                     <h1>DASHBOARD</h1>
+                    <EventForm />
+                    <PostForm />
+                    <button onClick={handleClick}>Log out</button>
+                    <EventList admin={admin} />
+                    {/* <PostList admin={admin} /> */}
                 </div>
             )}
         </>

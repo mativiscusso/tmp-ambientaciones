@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "../styles/Login.module.scss";
 import authAdmin from "../services/auth-admin";
 import { Router, useRouter } from "next/dist/client/router";
+import { signInUserAdmin } from "../firebase/client";
 
 const INITIAL_STATE = {
     username: "",
@@ -19,13 +20,12 @@ const Login = () => {
     };
     const handleSubmit = async (evt) => {
         evt.preventDefault();
-        const { status, token, message } = await authAdmin(formData);
 
-        if (status) {
-            localStorage.setItem("auth-admin", token);
+        const result = await signInUserAdmin(formData);
+        if (result.email) {
             router.push("/admin");
         } else {
-            setLoginMessage(message);
+            setLoginMessage(result.errorMessage);
         }
     };
 

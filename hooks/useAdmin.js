@@ -1,18 +1,16 @@
 import { useState, useEffect } from "react";
+import { onAuthStateChanged } from "../firebase/client";
 
-const useAdmin = () => {
+export default function useAdmin() {
+    const [admin, setAdmin] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [admin, setAdmin] = useState(false);
 
     useEffect(() => {
-        const token = localStorage.getItem("auth-admin");
-        if (token) {
-            setAdmin(true);
-        }
-        setLoading(false);
+        onAuthStateChanged(setAdmin);
+        setTimeout(() => {
+            setLoading(false);
+        }, 500);
     }, []);
 
     return [admin, loading];
-};
-
-export default useAdmin;
+}
