@@ -1,12 +1,18 @@
 import { useState, useEffect } from "react";
 
 const useAdmin = () => {
-    const [admin, setAdmin] = useState(undefined);
+    const [loading, setLoading] = useState(true);
+    const [admin, setAdmin] = useState(false);
 
     useEffect(() => {
-        //TODO Verificar token de admin
+        const token = localStorage.getItem("auth-admin");
+        if (token) {
+            setAdmin(true);
+        }
+        setLoading(false);
     }, []);
-    return admin;
+
+    return [admin, loading];
 };
 
 export default useAdmin;
