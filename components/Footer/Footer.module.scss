@@ -14,3 +14,15 @@
         }
     }
 }
+
+@media (min-width: 1024px) {
+    .footer {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 1.5rem;
+        .items {
+            padding: 1rem;
+        }
+    }
+}

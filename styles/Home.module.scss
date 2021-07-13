@@ -1,1 +1,39 @@
 @import "../styles/variables.scss";
+
+.container {
+    padding: 1rem;
+}
+.header {
+    position: relative;
+    .textHeader {
+        svg {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -60%);
+            z-index: 1;
+            width: 150px;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding: 4rem 2rem;
+    }
+    .header {
+        .textHeader {
+            svg {
+                top: 50%;
+                transform: translate(-60%, -50%);
+                width: 300px;
+            }
+        }
+    }
+}
+
+@media (min-width: 1340px) {
+    .container {
+        padding: 6rem 2rem;
+    }
+}

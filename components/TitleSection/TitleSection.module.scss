@@ -1,0 +1,8 @@
+@import "../../styles/variables.scss";
+
+.titleSection {
+    color: $white;
+    text-shadow: 5px 2px 0 $black;
+    text-transform: uppercase;
+    font-family: $titleFont;
+}

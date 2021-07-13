@@ -1,3 +1,8 @@
+@import "../components/MenuMobile/menuMobile.scss";
+
+* {
+  box-sizing: border-box;
+}
 html,
 body {
   padding: 0;
@@ -11,10 +16,6 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 ul {
   display: block;
   list-style-type: none;
@@ -25,4 +26,6 @@ ul {
   padding-inline-start: 0;
 }
 
-@import "../components/MenuMobile/menuMobile.scss";
+h2 {
+  margin: 0;
+}
