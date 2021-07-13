@@ -1,0 +1,16 @@
+@import "../../styles/variables.scss";
+
+.footer {
+    font-family: $textFont;
+    color: $white;
+    .items {
+        padding: 1rem;
+    }
+    .marca {
+        display: flex;
+        align-items: center;
+        img {
+            padding-right: 50px;
+        }
+    }
+}
