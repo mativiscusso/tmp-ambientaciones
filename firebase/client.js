@@ -95,8 +95,83 @@ export const fetchLastestPosts = () => {
         });
 };
 
+export const fetchCategoryEvent = () => {
+    return db
+        .collection("categoryEvent")
+        .get()
+        .then(({ docs }) => {
+            return docs.map((doc) => {
+                const data = doc.data();
+                const id = doc.id;
+                return { ...data, id };
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+};
+
 export const uploadImage = (image) => {
     const ref = firebase.storage().ref(`images/${image.name}`);
     const task = ref.put(image);
     return task;
+};
+
+export const uploadMultipleImages = async (images) => {
+    const promises = [];
+    const imagesURL = [];
+
+    images.forEach((file) => {
+        const uploadTask = firebase
+            .storage()
+            .ref()
+            .child(`images/${file.name}`)
+            .put(file);
+        promises.push(uploadTask);
+        uploadTask.on(
+            firebase.storage.TaskEvent.STATE_CHANGED,
+            (snapshot) => {
+                const progress =
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            },
+            (error) => console.log(error.code),
+            async () => {
+                const downloadURL =
+                    await uploadTask.snapshot.ref.getDownloadURL();
+                imagesURL.push(downloadURL);
+            }
+        );
+    });
+    try {
+        await Promise.all(promises);
+        return imagesURL;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const deleteDocumentOfCollection = async (id, collectionName) => {
+    const result = await db.collection(collectionName).doc(id).delete();
+    return result;
+};
+
+export const getDocumentOfCollection = (id, collectionName) => {
+    return db
+        .collection(collectionName)
+        .doc(id)
+        .get()
+        .then((result) => {
+            const data = result.data();
+            const id = result.id;
+            return { ...data, id };
+        })
+
+        .catch((err) => {
+            console.log(err);
+        });
+};
+
+export const setDocumentOfCollection = async (id, collectionName, data) => {
+    const result = await db.collection(collectionName).doc(id).set(data);
+    return result;
 };

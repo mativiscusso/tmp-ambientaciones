@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { addEvent, uploadImage } from "../../firebase/client";
+import EventCategoryList from "../EventCategoryList";
+import UploadImages from "../UploadImages";
 import styles from "./EventForm.module.scss";
 
 const INITIAL_STATE = {
@@ -8,28 +10,28 @@ const INITIAL_STATE = {
     category: "",
     images: "",
 };
-export default function EventForm() {
+export default function EventForm({ admin }) {
     const [formData, setFormData] = useState(INITIAL_STATE);
     const [isSending, setIsSending] = useState(false);
-    const [task, setTask] = useState(null);
+    const [imagesUploaded, setImagesUploaded] = useState([]);
     const [imgStoraged, setImgStoraged] = useState(null);
 
-    useEffect(() => {
-        if (task) {
-            const onProgress = () => {};
-            const onError = () => {};
-            const OnComplete = () => {
-                console.log("Completed");
-                task.snapshot.ref
-                    .getDownloadURL()
-                    .then(setImgStoraged)
-                    .catch((err) => {
-                        console.log(err);
-                    });
-            };
-            task.on("state_changed", onProgress, onError, OnComplete);
-        }
-    }, [task]);
+    // useEffect(() => {
+    //     if (task) {
+    //         const onProgress = () => {};
+    //         const onError = () => {};
+    //         const OnComplete = () => {
+    //             console.log("Completed");
+    //             task.snapshot.ref
+    //                 .getDownloadURL()
+    //                 .then(setImgStoraged)
+    //                 .catch((err) => {
+    //                     console.log(err);
+    //                 });
+    //         };
+    //         task.on("state_changed", onProgress, onError, OnComplete);
+    //     }
+    // }, [task]);
 
     const handleChangeImage = (e) => {
         const file = e.target.files[0];
@@ -43,14 +45,17 @@ export default function EventForm() {
     };
     const handleSubmit = (evt) => {
         evt.preventDefault();
+
         setIsSending(true);
         addEvent({
             title: formData.title,
             description: formData.description,
             category: formData.category,
-            images: imgStoraged,
+            images: [...imagesUploaded],
         })
             .then((result) => {
+                console.log(result);
+
                 setIsSending(false);
             })
             .catch((err) => {
@@ -75,32 +80,12 @@ export default function EventForm() {
                         onChange={handleChange}
                     />
                 </label>
-                <label htmlFor="title">
-                    Categoria
-                    <select
-                        name="category"
-                        onChange={handleChange}
-                        defaultValue="choice"
-                    >
-                        <option selected disabled value="choice">
-                            Seleccione una categoria...
-                        </option>
-                        <option value="bodas">Bodas</option>
-                        <option value="1">Bodas</option>
-                        <option value="2">Bodas</option>
-                        <option value="3">Bodas</option>
-                    </select>
-                </label>
-                <label htmlFor="title">
-                    Imagenes
-                    <input
-                        type="file"
-                        name="images"
-                        multiple
-                        onChange={handleChangeImage}
-                    />
-                    {imgStoraged && <small>{imgStoraged}</small>}
-                </label>
+                <EventCategoryList admin={admin} handleChange={handleChange} />
+
+                <UploadImages
+                    imagesUploaded={imagesUploaded}
+                    setImagesUploaded={setImagesUploaded}
+                />
                 <button disabled={isSending === true}>Crear</button>
             </form>
         </div>

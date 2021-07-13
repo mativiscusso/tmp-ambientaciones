@@ -14,7 +14,7 @@ const AdminPage = () => {
 
     useEffect(() => {
         if (admin === null && loading === false) {
-            router.push("/");
+            router.push("/login");
         }
     }, [admin, router, loading]);
 
@@ -30,8 +30,8 @@ const AdminPage = () => {
             {!loading && admin && (
                 <div>
                     <h1>DASHBOARD</h1>
-                    <EventForm />
-                    <PostForm />
+                    <EventForm admin={admin} />
+                    <PostForm admin={admin} />
                     <button onClick={handleClick}>Log out</button>
                     <EventList admin={admin} />
                     {/* <PostList admin={admin} /> */}
