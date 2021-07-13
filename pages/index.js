@@ -1,6 +1,6 @@
 import Image from "next/image";
-import headerImg from "assets/images/header.jpg";
-import rockVector from "svg/rock.svg";
+import headerImgDesktop from "assets/images/header.jpg";
+import headerImgMobile from "assets/images/header-mobile.jpg";
 import styles from "../styles/Home.module.scss";
 import Accordion from "components/Accordion";
 import RockVector from "components/RockVector";
@@ -12,11 +12,20 @@ export default function Home() {
                 <div className={styles.textHeader}>
                     <RockVector />
                 </div>
-                <Image
-                    src={headerImg}
-                    layout="responsive"
-                    alt="header banner"
-                />
+                <div className={styles.imgHeaderDesktop}>
+                    <Image
+                        src={headerImgDesktop}
+                        layout="responsive"
+                        alt="header banner"
+                    />
+                </div>
+                <div className={styles.imgHeaderMobile}>
+                    <Image
+                        src={headerImgMobile}
+                        layout="responsive"
+                        alt="header banner"
+                    />
+                </div>
             </header>
             <main className={styles.container}>
                 <Accordion />

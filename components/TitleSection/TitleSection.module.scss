@@ -2,7 +2,19 @@
 
 .titleSection {
     color: $white;
-    text-shadow: 5px 2px 0 $black;
     text-transform: uppercase;
     font-family: $titleFont;
+    font-size: 28px;
+    padding: 0.5rem 0;
+}
+
+@media (min-width: 1024px) {
+    .titleSection {
+        font-size: 52px;
+    }
+}
+@media (min-width: 1380px) {
+    .titleSection {
+        font-size: 72px;
+    }
 }

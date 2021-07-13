@@ -11,9 +11,9 @@
         flex: 1;
         overflow: hidden;
         transition: 0.6s;
-        margin-right: 1%;
         box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
         line-height: 0;
+        margin: 0.5rem 0;
         span {
             z-index: 2;
             position: relative;
@@ -50,7 +50,6 @@
             background-image: url("/images/social.jpg");
             background-size: cover;
             background-position: center;
-            margin-right: 0;
         }
         & > span {
             font-size: 3.8vh;
@@ -74,9 +73,12 @@
     .container {
         flex-direction: row;
         .box {
-            // margin: 0 0.5%;
+            margin: 0 1rem 0 0;
+            &:last-child {
+                margin-right: 0;
+            }
             & > span {
-                font-size: 48px;
+                font-size: 32px;
             }
             &:hover {
                 flex: 1 1 50%;
