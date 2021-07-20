@@ -4,10 +4,10 @@ import styles from "./Layout.module.scss";
 
 export default function Layout({ children }) {
     return (
-        <body className={styles.layout}>
+        <main className={styles.layout}>
             <Navbar />
             {children}
             <Footer />
-        </body>
+        </main>
     );
 }

@@ -4,10 +4,11 @@ import headerImgMobile from "assets/images/header-mobile.jpg";
 import styles from "../styles/Home.module.scss";
 import Accordion from "components/Accordion";
 import RockVector from "components/RockVector";
+import Layout from "components/Layout";
 
 export default function Home() {
     return (
-        <div>
+        <Layout>
             <header className={styles.header}>
                 <div className={styles.textHeader}>
                     <RockVector />
@@ -30,6 +31,6 @@ export default function Home() {
             <main className={styles.container}>
                 <Accordion />
             </main>
-        </div>
+        </Layout>
     );
 }

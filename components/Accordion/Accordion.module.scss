@@ -1,7 +1,6 @@
 @import "../../styles/variables.scss";
 .container {
     display: flex;
-    flex-direction: column;
     width: 100%;
     padding: 0;
     box-sizing: border-box;
@@ -13,7 +12,7 @@
         transition: 0.6s;
         box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
         line-height: 0;
-        margin: 0.5rem 0;
+        margin: 0.5rem;
         span {
             z-index: 2;
             position: relative;
@@ -51,17 +50,20 @@
             background-size: cover;
             background-position: center;
         }
-        & > span {
-            font-size: 3.8vh;
-            display: flex;
-            text-align: center;
-            height: 100%;
-            line-height: 2.6;
-            justify-content: center;
-            align-items: center;
-            color: $white;
-            text-shadow: 5px 2px 0 $black;
-            font-family: $titleFont;
+        a {
+            & > span {
+                font-size: 3.8vh;
+                display: flex;
+                text-align: center;
+                height: 100%;
+                line-height: 2.6;
+                justify-content: center;
+                align-items: center;
+                color: $white;
+                text-shadow: 5px 2px 0 $black;
+                text-transform: uppercase;
+                font-family: $titleFont;
+            }
         }
         &:hover {
             flex: 1 1 50%;
@@ -71,14 +73,15 @@
 
 @media (min-width: 1024px) {
     .container {
-        flex-direction: row;
         .box {
             margin: 0 1rem 0 0;
             &:last-child {
                 margin-right: 0;
             }
-            & > span {
-                font-size: 32px;
+            a {
+                & > span {
+                    font-size: 32px;
+                }
             }
             &:hover {
                 flex: 1 1 50%;

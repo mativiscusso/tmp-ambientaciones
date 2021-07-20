@@ -8,8 +8,15 @@
 }
 
 $red: rgb(238, 48, 35);
+$redGradient: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(238, 48, 35, 1) 100%);
+$redTransparent: rgba(238, 48, 35, 0.5);
 $black: #000;
 $grey: rgb(239, 233, 231);
 $white: #fff;
 $titleFont: "Helvetica Neue";
 $textFont: "Brandon Grotesque";
+
+$screen-sm: 768px;
+$screen-md: 1024px;
+$screen-lg: 1280px;
+$screen-xl: 1400px;

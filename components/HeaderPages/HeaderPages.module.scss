@@ -1,0 +1,64 @@
+@import ".../../styles/variables.scss";
+
+.header {
+    position: relative;
+    margin-bottom: 2rem;
+    .textHeader {
+        h1 {
+            position: absolute;
+            bottom: 0rem;
+            left: 1rem;
+            z-index: 2;
+            font-family: $titleFont;
+            font-size: 2.5rem;
+            color: $white;
+            text-transform: uppercase;
+            text-shadow: 5px 2px 0 $black;
+        }
+        p {
+            color: $white;
+            font-family: $textFont;
+            position: absolute;
+            bottom: -2rem;
+            left: 1rem;
+            z-index: 2;
+        }
+    }
+    .bg {
+        background: $redGradient;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+    }
+}
+.container {
+    padding: 6rem 0.5rem;
+}
+
+@media (min-width: 1024px) {
+    .header {
+        .textHeader {
+            h1 {
+                font-size: 6rem;
+                bottom: 6rem;
+                left: 2rem;
+            }
+            p {
+                font-size: 2rem;
+                bottom: 6rem;
+                left: 2rem;
+            }
+        }
+    }
+    .container {
+        padding: 10rem 2rem;
+    }
+}
+
+@media (min-width: 1340px) {
+    .container {
+        padding: 14rem 2rem;
+    }
+}

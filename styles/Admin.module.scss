@@ -1,0 +1,16 @@
+@import "./variables.scss";
+
+.admin {
+    background-color: $red;
+    font-family: $textFont;
+    min-height: 100vh;
+    .container {
+        padding: 1rem;
+    }
+}
+
+@media (min-width: $screen-sm) {
+    .admin {
+        padding: 0.5rem 1rem;
+    }
+}

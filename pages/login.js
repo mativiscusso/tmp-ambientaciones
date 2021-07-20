@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styles from "../styles/Login.module.scss";
-import authAdmin from "../services/auth-admin";
-import { Router, useRouter } from "next/dist/client/router";
+import { useRouter } from "next/dist/client/router";
 import { signInUserAdmin } from "../firebase/client";
+import Layout from "components/Layout";
 
 const INITIAL_STATE = {
     username: "",
@@ -30,28 +30,30 @@ const Login = () => {
     };
 
     return (
-        <div className={styles.container}>
-            <form className={styles.form} onSubmit={handleSubmit}>
-                <label htmlFor="Usuario">
-                    Usuario
-                    <input
-                        type="text"
-                        name="username"
-                        onChange={handleChange}
-                    />
-                </label>
-                <label htmlFor="Contraseña">
-                    Contraseña
-                    <input
-                        type="password"
-                        name="password"
-                        onChange={handleChange}
-                    />
-                </label>
-                <button>Ingresar</button>
-            </form>
-            {loginMessage && <small>{loginMessage}</small>}
-        </div>
+        <Layout>
+            <div className={styles.container}>
+                <form className={styles.form} onSubmit={handleSubmit}>
+                    <label htmlFor="Usuario">
+                        Usuario
+                        <input
+                            type="text"
+                            name="username"
+                            onChange={handleChange}
+                        />
+                    </label>
+                    <label htmlFor="Contraseña">
+                        Contraseña
+                        <input
+                            type="password"
+                            name="password"
+                            onChange={handleChange}
+                        />
+                    </label>
+                    <button>Ingresar</button>
+                </form>
+                {loginMessage && <small>{loginMessage}</small>}
+            </div>
+        </Layout>
     );
 };
 

@@ -3,6 +3,7 @@ import { push as Menu } from "react-burger-menu";
 import Link from "next/link";
 import Image from "next/image";
 import logoTmp from "svg/logo.svg";
+import Navlinks from "../Navlinks";
 
 const index = (props) => {
     return (
@@ -26,18 +27,7 @@ const index = (props) => {
             </Link>
 
             <Menu {...props}>
-                <Link href="/nosotros">
-                    <a>¿Qué hacemos?</a>
-                </Link>
-                <Link href="/nosotros">
-                    <a>¿Qué hacemos?</a>
-                </Link>
-                <Link href="/nosotros">
-                    <a>¿Qué hacemos?</a>
-                </Link>
-                <Link href="/nosotros">
-                    <a>¿Qué hacemos?</a>
-                </Link>
+                <Navlinks isMobile={true} />
             </Menu>
         </div>
     );

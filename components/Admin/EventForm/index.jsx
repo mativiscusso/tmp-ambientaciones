@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { addEvent, uploadImage } from "../../firebase/client";
+import { addEvent, uploadImage } from "firebase/client";
 import EventCategoryList from "../EventCategoryList";
 import UploadImages from "../UploadImages";
 import styles from "./EventForm.module.scss";
+import Image from "next/image";
 
 const INITIAL_STATE = {
     title: "",
@@ -14,31 +15,18 @@ export default function EventForm({ admin }) {
     const [formData, setFormData] = useState(INITIAL_STATE);
     const [isSending, setIsSending] = useState(false);
     const [imagesUploaded, setImagesUploaded] = useState([]);
-    const [imgStoraged, setImgStoraged] = useState(null);
+    const [readyForSend, setReadyForSend] = useState(false);
 
-    // useEffect(() => {
-    //     if (task) {
-    //         const onProgress = () => {};
-    //         const onError = () => {};
-    //         const OnComplete = () => {
-    //             console.log("Completed");
-    //             task.snapshot.ref
-    //                 .getDownloadURL()
-    //                 .then(setImgStoraged)
-    //                 .catch((err) => {
-    //                     console.log(err);
-    //                 });
-    //         };
-    //         task.on("state_changed", onProgress, onError, OnComplete);
-    //     }
-    // }, [task]);
-
-    const handleChangeImage = (e) => {
-        const file = e.target.files[0];
-        console.log(file);
-        const task = uploadImage(file);
-        setTask(task);
-    };
+    useEffect(() => {
+        const { title, category } = formData;
+        if (
+            title.length > 2 &&
+            category.length > 2 &&
+            imagesUploaded.length > 0
+        ) {
+            setReadyForSend(true);
+        }
+    }, [formData, imagesUploaded]);
 
     const handleChange = (evt) => {
         setFormData({ ...formData, [evt.target.name]: evt.target.value });
@@ -50,12 +38,10 @@ export default function EventForm({ admin }) {
         addEvent({
             title: formData.title,
             description: formData.description,
-            category: formData.category,
+            category: formData.category.toLowerCase(),
             images: [...imagesUploaded],
         })
             .then((result) => {
-                console.log(result);
-
                 setIsSending(false);
             })
             .catch((err) => {
@@ -65,7 +51,7 @@ export default function EventForm({ admin }) {
 
     return (
         <div>
-            <h3>Crear eventos</h3>
+            <h2>Crear eventos</h2>
             <form onSubmit={handleSubmit} className={styles.form}>
                 <label htmlFor="title">
                     Titulo
@@ -75,8 +61,8 @@ export default function EventForm({ admin }) {
                     Descripcion
                     <textarea
                         name="description"
-                        cols="30"
-                        rows="10"
+                        cols="10"
+                        rows="5"
                         onChange={handleChange}
                     />
                 </label>
@@ -86,7 +72,27 @@ export default function EventForm({ admin }) {
                     imagesUploaded={imagesUploaded}
                     setImagesUploaded={setImagesUploaded}
                 />
-                <button disabled={isSending === true}>Crear</button>
+                <div
+                    style={{
+                        display: "flex",
+                        padding: "1rem 0",
+                        justifyContent: "space-between",
+                    }}
+                >
+                    {imagesUploaded.length > 0 &&
+                        imagesUploaded.map((img, i) => (
+                            <Image
+                                src={img}
+                                alt="Imagen del evento por subir"
+                                width={50}
+                                height={50}
+                                key={i}
+                            />
+                        ))}
+                </div>
+                <button disabled={isSending === true || !readyForSend}>
+                    Crear
+                </button>
             </form>
         </div>
     );

@@ -1,0 +1,26 @@
+@import "../../../styles/variables.scss";
+
+.nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    font-family: $titleFont;
+    font-size: 18px;
+    font-weight: 400;
+    color: $black;
+    a {
+        &:first-child {
+            font-size: 20px;
+            color: $white;
+        }
+    }
+    button {
+        background-color: transparent;
+        border: 1px solid $black;
+        font-family: $titleFont;
+        padding: 4px 8px;
+    }
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+}

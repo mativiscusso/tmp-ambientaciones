@@ -1,29 +1,20 @@
-@import "./variables.scss";
-.container {
-    min-height: 100vh;
-    padding: 0 0.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+@import "../../../styles/variables.scss";
 .form {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 300px;
-    width: 320px;
-    box-shadow: 1px 2px 20px rgba(0, 0, 0, 0.329);
-    padding: 2.5rem;
-    font-family: $textFont;
+    max-width: 100%;
+
     label {
         display: flex;
         flex-direction: column;
         color: $white;
         text-transform: uppercase;
+        padding: 1rem 0;
+        font-size: 1.1rem;
     }
-    input {
+    input,
+    textarea,
+    select {
         padding: 0.5rem;
         background-color: transparent;
         border: 0;
@@ -32,6 +23,14 @@
         padding: 0.5rem 0.2rem;
         outline: 0;
         font-family: $textFont;
+        &[type="file"] {
+            button {
+                background-color: #fff;
+            }
+        }
+    }
+    select {
+        text-transform: uppercase;
     }
     button {
         background-color: $black;
@@ -43,10 +42,12 @@
         font-weight: 600;
         letter-spacing: 3px;
         font-family: $textFont;
-
         &:hover {
             cursor: pointer;
             background-color: $white;
+        }
+        &[disabled] {
+            opacity: 0.5;
         }
     }
 }

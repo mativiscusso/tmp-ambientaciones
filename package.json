@@ -1,23 +1,25 @@
 {
-  "name": "tmp-app",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "firebase": "^8.7.0",
-    "next": "11.0.1",
-    "react": "17.0.2",
-    "react-burger-menu": "^3.0.6",
-    "react-dom": "17.0.2",
-    "sass": "^1.35.1"
-  },
-  "devDependencies": {
-    "eslint": "7.29.0",
-    "eslint-config-next": "11.0.1"
-  }
+    "name": "tmp-app",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "firebase": "8.7.0",
+        "next": "11.0.1",
+        "photoswipe": "^4.1.3",
+        "react": "17.0.2",
+        "react-burger-menu": "3.0.6",
+        "react-dom": "17.0.2",
+        "react-photoswipe-gallery": "^1.3.6",
+        "sass": "1.35.1"
+    },
+    "devDependencies": {
+        "eslint": "7.29.0",
+        "eslint-config-next": "11.0.1"
+    }
 }

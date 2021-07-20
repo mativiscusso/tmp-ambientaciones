@@ -7,19 +7,32 @@
     width: 100%;
     align-items: center;
     padding: 0 1rem;
-    z-index: 9999;
+    z-index: 4;
+    top: 0;
+
+    background: rgb(0, 0, 0);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 41%, rgba(0, 0, 0, 0) 100%);
     .navbarLinks {
         display: none;
     }
     transition: all 0.3s ease-in;
+}
+.interiorismoBtn {
+    border: 2px solid brown;
+    padding: 5px 8px;
+    a {
+        color: brown !important;
+        &:hover {
+            transition: color 0.1s ease-in;
+            color: $white !important;
+        }
+    }
 }
 
 @media all and (min-width: 1024px) {
     .navbar {
         padding: 1rem 2rem;
         width: 100%;
-        background: rgb(0, 0, 0);
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 41%, rgba(0, 0, 0, 0) 100%);
         .navbarIconHamburg {
             display: none;
         }

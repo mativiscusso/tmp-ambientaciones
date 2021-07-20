@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchCategoryEvent } from "../../firebase/client";
+import { fetchCategoryEvent } from "../../../firebase/client";
 
 export default function EventCategoryList({ handleChange, admin }) {
     const [categories, setCategories] = useState([]);

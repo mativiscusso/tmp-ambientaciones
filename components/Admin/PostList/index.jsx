@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchLastestPosts } from "../../firebase/client";
+import { fetchLastestPosts } from "../../../firebase/client";
 
 export default function PostList({ admin }) {
     const [posts, setPosts] = useState([]);

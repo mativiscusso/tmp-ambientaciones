@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { uploadMultipleImages } from "../../firebase/client";
+import { uploadMultipleImages } from "../../../firebase/client";
 
 export default function UploadImage({ imagesUploaded, setImagesUploaded }) {
     const [files, setFiles] = useState([]);
@@ -24,11 +24,13 @@ export default function UploadImage({ imagesUploaded, setImagesUploaded }) {
                 Select Files
                 <input type="file" multiple onChange={onFileChange} />
             </label>
-            {imagesUploaded &&
-                imagesUploaded?.imagesURL?.map((image) => (
-                    <small key={Math.random}>{image}</small>
-                ))}
-            <button onClick={onUploadSubmission}>Upload</button>
+
+            <button
+                onClick={onUploadSubmission}
+                disabled={files.length <= 0 || imagesUploaded.length >= 1}
+            >
+                Upload
+            </button>
         </>
     );
 }

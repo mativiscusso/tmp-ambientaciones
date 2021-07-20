@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import {
     deleteDocumentOfCollection,
-    fetchLastestEvents,
+    fetchAllEvents,
     getDocumentOfCollection,
-} from "../../firebase/client";
+} from "../../../firebase/client";
 
 export default function EventList({ admin }) {
     const [events, setEvents] = useState([]);
 
     useEffect(() => {
         admin &&
-            fetchLastestEvents()
+            fetchAllEvents()
                 .then(setEvents)
                 .catch((err) => console.log(err));
     }, [admin]);

@@ -59,12 +59,31 @@ export const addEvent = ({ title, description, category, images }) => {
     });
 };
 
-export const fetchLastestEvents = () => {
+export const fetchAllEvents = () => {
     return db
         .collection("events")
         .orderBy("createdAt", "desc")
         .get()
         .then(({ docs }) => {
+            return docs.map((doc) => {
+                const data = doc.data();
+                const id = doc.id;
+                const { createdAt } = data;
+                return { ...data, id, createdAt: +createdAt.toDate() };
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+};
+
+export const fetchFilterEvents = (fieldToFilter, valueToFilter) => {
+    return db
+        .collection("events")
+        .where(fieldToFilter, "==", valueToFilter)
+        .get()
+        .then(({ docs }) => {
+            console.log(docs);
             return docs.map((doc) => {
                 const data = doc.data();
                 const id = doc.id;
