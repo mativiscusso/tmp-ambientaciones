@@ -8,7 +8,7 @@ export default function CardEvents({ events }) {
             {events &&
                 events.map((event, index) => (
                     <Link
-                        href={`/${event.category}/${event.id}`}
+                        href={`/jobs/${event.category}/${event.id}`}
                         key={event.id}
                     >
                         <a

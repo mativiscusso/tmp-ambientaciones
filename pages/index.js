@@ -6,6 +6,9 @@ import Accordion from "components/Accordion";
 import RockVector from "components/RockVector";
 import Layout from "components/Layout";
 
+const videoUrl =
+    "https://firebasestorage.googleapis.com/v0/b/tmp-ambientaciones.appspot.com/o/video%2Fshooting_backstage_TMPweb2.mp4?alt=media&token=de3f9735-9682-44dd-a393-73ee1fa594e0";
+
 export default function Home() {
     return (
         <Layout>
@@ -13,7 +16,10 @@ export default function Home() {
                 <div className={styles.textHeader}>
                     <RockVector />
                 </div>
-                <div className={styles.imgHeaderDesktop}>
+                <video muted autoPlay loop playsInline>
+                    <source src={videoUrl} type="video/mp4" />
+                </video>
+                {/* <div className={styles.imgHeaderDesktop}>
                     <Image
                         src={headerImgDesktop}
                         layout="responsive"
@@ -26,7 +32,7 @@ export default function Home() {
                         layout="responsive"
                         alt="header banner"
                     />
-                </div>
+                </div> */}
             </header>
             <main className={styles.container}>
                 <Accordion />

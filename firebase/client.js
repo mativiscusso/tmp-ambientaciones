@@ -1,14 +1,6 @@
 import firebase from "firebase";
 
-const firebaseConfig = {
-    apiKey: "AIzaSyDmpMneqxc16Dluqwb1mlS-s6Gtc_1wyUk",
-    authDomain: "tmp-ambientaciones.firebaseapp.com",
-    projectId: "tmp-ambientaciones",
-    storageBucket: "tmp-ambientaciones.appspot.com",
-    messagingSenderId: "231324720416",
-    appId: "1:231324720416:web:90fb18d76e7db0f2e34b45",
-    measurementId: "G-P28E754J58",
-};
+const firebaseConfig = JSON.parse(process.env.NEXT_PUBLIC_FIREBASE_CONFIG);
 
 firebase.apps.length === 0 && firebase.initializeApp(firebaseConfig);
 firebase.apps.length === 0 && firebase.analytics();

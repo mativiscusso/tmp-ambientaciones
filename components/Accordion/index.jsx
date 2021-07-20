@@ -26,7 +26,7 @@ export default function Accordion() {
                 {eventsName &&
                     eventsName.map((event) => (
                         <div key={event.id} className={styles.box}>
-                            <Link href={`/${event.name}`}>
+                            <Link href={`/jobs/${event.name}`}>
                                 <a>
                                     <span>{event.name}</span>
                                     <div className={styles.bg}></div>
