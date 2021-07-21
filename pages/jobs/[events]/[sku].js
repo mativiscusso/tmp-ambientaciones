@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Masonry from "components/Masonry";
 import Layout from "components/Layout";
 import useEvent from "hooks/useEvent";
+import styles from "styles/EventsPage.module.scss";
 
 export default function BodasPage() {
     const router = useRouter();
@@ -11,9 +12,10 @@ export default function BodasPage() {
 
     return (
         <Layout>
-            <HeaderPages title={event?.title} />
-
-            <Masonry event={event} />
+            <main className={styles.events}>
+                <HeaderPages title={event?.title} />
+                <Masonry event={event} />
+            </main>
         </Layout>
     );
 }

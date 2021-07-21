@@ -3,6 +3,13 @@
 * {
   box-sizing: border-box;
 }
+html {
+  scroll-behavior: smooth;
+}
+
+html.normal-scroll {
+  scroll-behavior: auto;
+}
 html,
 body {
   padding: 0;

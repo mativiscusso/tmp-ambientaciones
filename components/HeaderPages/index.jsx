@@ -4,15 +4,12 @@ import Image from "next/image";
 import headerImgDesktop from "assets/images/header.jpg";
 import useEvents from "hooks/useEvents";
 
-export default function HeaderPages({ title }) {
+export default function HeaderPages({ title, subtitle = "" }) {
     return (
         <header className={styles.header}>
             <div className={styles.textHeader}>
                 <h1>{title}</h1>
-                <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Unde, qui.
-                </p>
+                <p>{subtitle}</p>
             </div>
             <div className={styles.imgHeaderDesktop}>
                 <div className={styles.bg}></div>

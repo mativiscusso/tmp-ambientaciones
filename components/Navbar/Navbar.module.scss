@@ -9,23 +9,15 @@
     padding: 0 1rem;
     z-index: 4;
     top: 0;
-
-    background: rgb(0, 0, 0);
+    letter-spacing: 2px;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.65) 35%, rgba(0, 0, 0, 0) 100%);
     .navbarLinks {
         display: none;
     }
     transition: all 0.3s ease-in;
-}
-.interiorismoBtn {
-    border: 2px solid brown;
-    padding: 5px 8px;
-    a {
-        color: brown !important;
-        &:hover {
-            transition: color 0.1s ease-in;
-            color: $white !important;
-        }
+    .interiorismoBtn {
+        background-color: brown;
+        padding: 5px 8px;
     }
 }
 
@@ -59,6 +51,26 @@
                 }
             }
         }
+        .interiorismoBtn {
+            padding-bottom: 0;
+            margin-top: -1rem;
+            box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.171);
+            border-radius: 0 0 10px 10px;
+            a {
+                height: 100px;
+                position: relative;
+                display: flex;
+                align-items: flex-end;
+                padding-bottom: 32px;
+
+                &:hover {
+                    transition: opacity 0.1s ease-in;
+                    cursor: pointer;
+                    color: $black !important;
+                    filter: opacity(0.7);
+                }
+            }
+        }
     }
 }
 @media all and (min-width: 1400px) {
@@ -67,7 +79,7 @@
         .navbarLinks {
             display: flex;
             ul {
-                width: 600px;
+                width: 800px;
             }
         }
     }

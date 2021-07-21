@@ -1,10 +1,10 @@
-import EventForm from "components/Admin/EventForm";
+import PostForm from "components/Admin/PostForm";
 import useAdmin from "hooks/useAdmin";
 import styles from "styles/Admin.module.scss";
 import useAuth from "hooks/useAuth";
 import NavbarAdmin from "components/Admin/Navbar";
 
-export default function CreateEventsPage() {
+export default function CreatePostPage() {
     const [admin, loading] = useAdmin();
     useAuth(admin, loading);
 
@@ -14,7 +14,7 @@ export default function CreateEventsPage() {
                 <>
                     <NavbarAdmin />
                     <div className={styles.container}>
-                        <EventForm admin={admin} />
+                        <PostForm admin={admin} />
                     </div>
                 </>
             )}

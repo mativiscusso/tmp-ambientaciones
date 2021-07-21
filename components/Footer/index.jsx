@@ -7,7 +7,7 @@ import styles from "./Footer.module.scss";
 
 export default function Footer() {
     return (
-        <footer className={styles.footer}>
+        <footer className={styles.footer} id="contacto">
             <div className={styles.items}>
                 <p className={styles.marca}>
                     <Image src={logo} width={40} height={40} alt="logo TMP" />

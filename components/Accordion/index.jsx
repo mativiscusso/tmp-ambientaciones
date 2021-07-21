@@ -11,7 +11,9 @@ export default function Accordion() {
         fetchCategoryEvent()
             .then((result) => {
                 const categoriesFiltered = result.filter(
-                    (category) => category.name !== "interiorismo"
+                    (category) =>
+                        category.name !== "interiorismo" &&
+                        category.name !== "editoriales"
                 );
                 setEventsName(categoriesFiltered);
             })

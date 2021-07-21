@@ -29,14 +29,14 @@ export default function Navlinks({ isMobile }) {
                 </Link>
             )}
 
+            <li>
+                <Link href="#contacto">
+                    <a>Contacto</a>
+                </Link>
+            </li>
             <li className={styles.interiorismoBtn}>
                 <Link href="/interiorismo">
                     <a>Interiorismo</a>
-                </Link>
-            </li>
-            <li>
-                <Link href="/contacto">
-                    <a>Contacto</a>
                 </Link>
             </li>
         </ul>
