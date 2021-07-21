@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { addEvent, uploadImage } from "firebase/client";
+import { addEvent } from "firebase/client";
 import EventCategoryList from "../EventCategoryList";
 import UploadImages from "../UploadImages";
 import styles from "./EventForm.module.scss";

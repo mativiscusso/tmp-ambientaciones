@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "./PostForm.module.scss";
 import UploadImages from "../UploadImages";
+import { addPost } from "firebase/client";
 
 const INITIAL_STATE = {
     title: "",
@@ -11,6 +12,7 @@ const INITIAL_STATE = {
 };
 export default function PostForm() {
     const [formData, setFormData] = useState(INITIAL_STATE);
+    const [isSending, setIsSending] = useState(false);
     const [imagesUploaded, setImagesUploaded] = useState([]);
     const [readyForSend, setReadyForSend] = useState(false);
 
@@ -29,16 +31,24 @@ export default function PostForm() {
         setFormData({ ...formData, [evt.target.name]: evt.target.value });
     };
 
-    const handleChangeImage = (e) => {
-        const file = e.target.files[0];
-        console.log(file);
-        const task = uploadImage(file);
-        setTask(task);
-    };
-
     const handleSubmit = (evt) => {
         evt.preventDefault();
+        setIsSending(true);
+        addPost({
+            title: formData.title,
+            content: formData.content,
+            images: [...imagesUploaded],
+            slug: formData.title.toLowerCase().replace(/\s/g, "-"),
+        })
+            .then((result) => {
+                setIsSending(false);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     };
+
+    console.log(imagesUploaded);
     return (
         <div>
             <h3>Crear Posteos</h3>
@@ -47,39 +57,21 @@ export default function PostForm() {
                     Título
                     <input type="text" name="title" onChange={handleChange} />
                 </label>
-                <label htmlFor="description">
+                <label htmlFor="content">
                     Contenido
                     <textarea
-                        name="description"
+                        name="content"
                         cols="30"
                         rows="10"
                         onChange={handleChange}
                     />
                 </label>
-
                 <UploadImages
                     imagesUploaded={imagesUploaded}
                     setImagesUploaded={setImagesUploaded}
                 />
-                <div
-                    style={{
-                        display: "flex",
-                        padding: "1rem 0",
-                        justifyContent: "space-between",
-                    }}
-                >
-                    {imagesUploaded.length > 0 &&
-                        imagesUploaded.map((img, i) => (
-                            <Image
-                                src={img}
-                                alt="Imagen del evento por subir"
-                                width={50}
-                                height={50}
-                                key={i}
-                            />
-                        ))}
-                </div>
-                <button disabled={!readyForSend}>Crear</button>
+                <br />
+                <button disabled={!readyForSend || isSending}>Crear</button>
             </form>
         </div>
     );

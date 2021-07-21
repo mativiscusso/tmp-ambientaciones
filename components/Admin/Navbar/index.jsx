@@ -1,8 +1,23 @@
+import { signOutUserAdmin } from "firebase/client";
 import Link from "next/link";
-import useLogout from "hooks/useLogout";
+import { useRouter } from "next/router";
 import styles from "./NavbarAdmin.module.scss";
 
 export default function NavbarAdmin() {
+    const router = useRouter();
+
+    const handleLogout = () => {
+        signOutUserAdmin()
+            .then((result) => {
+                if (result) {
+                    return router.push("/login");
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
     return (
         <nav className={styles.nav}>
             <Link href="/admin">
@@ -14,7 +29,10 @@ export default function NavbarAdmin() {
             <Link href="/admin/create/posts">
                 <a>Posteos</a>
             </Link>
-            <button onClick={useLogout}>Log out</button>
+            <Link href="/">
+                <a>Ver sitio</a>
+            </Link>
+            <button onClick={handleLogout}>Log out</button>
         </nav>
     );
 }

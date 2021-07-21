@@ -1,0 +1,32 @@
+@import "../../styles/variables.scss";
+.cardBlog {
+    display: flex;
+    align-items: center;
+    font-family: $textFont;
+    padding: 1rem;
+    .image {
+        width: 25%;
+        height: 100px;
+        border-radius: 50%;
+        border: 1px solid #000;
+    }
+    .body {
+        width: 75%;
+        padding: 0 1rem;
+        h2 {
+            font-size: 1.2rem;
+            margin: 0;
+            font-family: $titleFont;
+        }
+        p {
+            color: $white;
+            margin: 0;
+            font-size: 1rem;
+        }
+        time {
+            color: rgb(44, 44, 44);
+            font-weight: 800;
+            margin-left: 12px;
+        }
+    }
+}

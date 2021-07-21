@@ -51,6 +51,16 @@ export const addEvent = ({ title, description, category, images }) => {
     });
 };
 
+export const addPost = ({ title, content, images, slug }) => {
+    return db.collection("posts").add({
+        title,
+        content,
+        images,
+        slug,
+        createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+    });
+};
+
 export const fetchAllEvents = () => {
     return db
         .collection("events")

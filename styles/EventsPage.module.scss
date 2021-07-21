@@ -2,4 +2,9 @@
 
 .events {
     background-color: $red;
+    & > p {
+        padding: 3rem 2rem;
+        font-family: $textFont;
+        font-size: 2em;
+    }
 }

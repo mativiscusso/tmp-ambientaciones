@@ -2,32 +2,12 @@
 
 .blog {
     background-color: $red;
-    p {
-        padding: 0.5rem 1rem;
-        font-family: $textFont;
-        color: $white;
-    }
 }
 
 @media (min-width: $screen-md) {
-    .blog {
-        p {
-            font-size: 1.2rem;
-        }
-    }
 }
 @media (min-width: $screen-lg) {
-    .blog {
-        p {
-            font-size: 1.4rem;
-        }
-    }
 }
 
 @media (min-width: $screen-xl) {
-    .blog {
-        p {
-            font-size: 1.5rem;
-        }
-    }
 }
