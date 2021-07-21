@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Layout from "components/Layout";
 import styles from "styles/ArticlesPage.module.scss";
 
-export default function BodasPage() {
+export default function ArticlePage() {
     const router = useRouter();
     const { slug } = router.query;
     // const event = useEvent(slug);

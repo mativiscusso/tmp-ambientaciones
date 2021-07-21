@@ -5,11 +5,10 @@ import { useRouter } from "next/router";
 import Layout from "components/Layout";
 import styles from "styles/EventsPage.module.scss";
 
-export default function BodasPage() {
+export default function EventsPage() {
     const router = useRouter();
     const { events: eventQuery } = router.query;
     const events = useEvents("category", eventQuery);
-    console.log(events.length);
     return (
         <Layout>
             <main className={styles.events}>

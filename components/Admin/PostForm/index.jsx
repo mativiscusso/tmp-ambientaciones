@@ -48,7 +48,6 @@ export default function PostForm() {
             });
     };
 
-    console.log(imagesUploaded);
     return (
         <div>
             <h3>Crear Posteos</h3>

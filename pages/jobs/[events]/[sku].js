@@ -5,7 +5,7 @@ import Layout from "components/Layout";
 import useEvent from "hooks/useEvent";
 import styles from "styles/EventsPage.module.scss";
 
-export default function BodasPage() {
+export default function EventPage() {
     const router = useRouter();
     const { sku } = router.query;
     const event = useEvent(sku);
