@@ -43,6 +43,7 @@ export default function EventForm({ admin }) {
         })
             .then((result) => {
                 setIsSending(false);
+                router.push("/admin");
             })
             .catch((err) => {
                 console.log(err);

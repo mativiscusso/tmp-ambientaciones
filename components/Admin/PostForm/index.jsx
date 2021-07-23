@@ -42,6 +42,7 @@ export default function PostForm() {
         })
             .then((result) => {
                 setIsSending(false);
+                router.push("/admin");
             })
             .catch((err) => {
                 console.log(err);

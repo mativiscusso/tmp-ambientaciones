@@ -6,6 +6,13 @@ import styles from "./Navbar.module.scss";
 export default function Navlinks({ isMobile }) {
     return (
         <ul>
+            {isMobile && (
+                <li>
+                    <Link href="/">
+                        <a>Home</a>
+                    </Link>
+                </li>
+            )}
             <li>
                 <Link href="/nosotros">
                     <a>¿Qué hacemos?</a>
@@ -35,7 +42,7 @@ export default function Navlinks({ isMobile }) {
                 </Link>
             </li>
             <li className={styles.interiorismoBtn}>
-                <Link href="/interiorismo">
+                <Link href="/jobs/interiorismo">
                     <a>Interiorismo</a>
                 </Link>
             </li>

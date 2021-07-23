@@ -1,4 +1,4 @@
-import { fetchAllEvents, fetchFilterEvents } from "firebase/client";
+import { fetchFilterEvents } from "firebase/client";
 import { useState, useEffect } from "react";
 
 export default function useEvents(fieldToFilter, valueToFilter) {

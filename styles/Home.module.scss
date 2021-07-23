@@ -12,7 +12,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 1;
-            width: 150px;
+            width: 180px;
         }
     }
     video {
@@ -38,10 +38,9 @@
         position: absolute;
         top: 50%;
         left: 45%;
-        transform: translate(-50%, -50%);
+        transform: translate(-45%, -50%);
         z-index: 1;
         width: 150px;
-        letter-spacing: 2px;
     }
 }
 .container {
@@ -76,8 +75,7 @@
         }
         h2 {
             font-size: 4.5em;
-            letter-spacing: 3px;
-            left: 40%;
+            // left: 40%;
         }
     }
 }
