@@ -4,13 +4,14 @@
     position: relative;
     margin-bottom: 1rem;
     .textHeader {
+        padding: 0 1rem;
         h1 {
             position: absolute;
             bottom: 0rem;
             left: 1rem;
             z-index: 2;
             font-family: $titleFont;
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: $white;
             text-transform: uppercase;
             text-shadow: 5px 2px 0 $black;
@@ -25,12 +26,15 @@
         }
     }
     .bg {
-        background: $redGradient;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.7063200280112045) 42%, rgba(238, 48, 35, 1) 100%);
         width: 100%;
         height: 100%;
         position: absolute;
         z-index: 1;
         top: 0;
+    }
+    .imgHeaderDesktop {
+        height: 250px;
     }
 }
 .container {
@@ -39,17 +43,21 @@
 
 @media (min-width: 1024px) {
     .header {
+        margin-bottom: 0;
         .textHeader {
             h1 {
-                font-size: 6rem;
-                bottom: 6rem;
+                font-size: 5rem;
+                bottom: 1.5rem;
                 left: 2rem;
             }
             p {
                 font-size: 2rem;
-                bottom: 6rem;
+                bottom: 1rem;
                 left: 2rem;
             }
+        }
+        .imgHeaderDesktop {
+            height: 420px;
         }
     }
     .container {

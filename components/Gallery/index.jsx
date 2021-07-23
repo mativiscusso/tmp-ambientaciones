@@ -6,7 +6,7 @@ import "photoswipe/dist/default-skin/default-skin.css";
 
 import { Gallery, Item } from "react-photoswipe-gallery";
 
-export default function Masonry({ event }) {
+export default function GalleryComponent({ event }) {
     const [widthScreen, setWidthScreen] = useState(0);
 
     useEffect(() => {
@@ -23,6 +23,7 @@ export default function Masonry({ event }) {
                         width={widthScreen}
                         height="300"
                         key={i + Math.random()}
+                        styles={{ height: "auto!important" }}
                     >
                         {({ ref, open }) => (
                             <img

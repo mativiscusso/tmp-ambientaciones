@@ -20,3 +20,8 @@ $screen-sm: 768px;
 $screen-md: 1024px;
 $screen-lg: 1280px;
 $screen-xl: 1400px;
+
+.pswp img {
+    max-width: none;
+    object-fit: contain;
+}
