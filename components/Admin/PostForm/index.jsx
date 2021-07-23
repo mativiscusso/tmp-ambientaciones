@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "./PostForm.module.scss";
 import UploadImages from "../UploadImages";
 import { addPost } from "firebase/client";
+import { useRouter } from "next/router";
 
 const INITIAL_STATE = {
     title: "",
@@ -15,6 +16,8 @@ export default function PostForm() {
     const [isSending, setIsSending] = useState(false);
     const [imagesUploaded, setImagesUploaded] = useState([]);
     const [readyForSend, setReadyForSend] = useState(false);
+
+    const router = useRouter();
 
     useEffect(() => {
         const { title, content } = formData;
@@ -49,9 +52,10 @@ export default function PostForm() {
             });
     };
 
+    console.log({ imagesUploaded, readyForSend });
     return (
-        <div>
-            <h3>Crear Posteos</h3>
+        <div className={styles.container}>
+            <h2 className={styles.title}>Crear Posteos</h2>
             <form onSubmit={handleSubmit} className={styles.form}>
                 <label htmlFor="title">
                     Título

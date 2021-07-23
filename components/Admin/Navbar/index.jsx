@@ -24,10 +24,10 @@ export default function NavbarAdmin() {
                 <a>DASHBOARD</a>
             </Link>
             <Link href="/admin/create/events">
-                <a>Eventos</a>
+                <a>Crear Eventos</a>
             </Link>
             <Link href="/admin/create/posts">
-                <a>Posteos</a>
+                <a>Crear Posteos</a>
             </Link>
             <Link href="/">
                 <a>Ver sitio</a>

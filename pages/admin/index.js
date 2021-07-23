@@ -3,6 +3,7 @@ import useAdmin from "hooks/useAdmin";
 import styles from "styles/Admin.module.scss";
 import useAuth from "hooks/useAuth";
 import NavbarAdmin from "components/Admin/Navbar";
+import PostList from "components/Admin/PostList";
 
 export default function AdminPage() {
     const [admin, loading] = useAdmin();
@@ -16,6 +17,8 @@ export default function AdminPage() {
                     <div className={styles.container}>
                         <h1>Hola, Admin</h1>
                         <EventList admin={admin} />
+                        <br />
+                        <PostList admin={admin} />
                     </div>
                 </>
             )}

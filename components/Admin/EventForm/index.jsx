@@ -4,6 +4,7 @@ import EventCategoryList from "../EventCategoryList";
 import UploadImages from "../UploadImages";
 import styles from "./EventForm.module.scss";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const INITIAL_STATE = {
     title: "",
@@ -16,6 +17,8 @@ export default function EventForm({ admin }) {
     const [isSending, setIsSending] = useState(false);
     const [imagesUploaded, setImagesUploaded] = useState([]);
     const [readyForSend, setReadyForSend] = useState(false);
+
+    const router = useRouter();
 
     useEffect(() => {
         const { title, category } = formData;
@@ -51,8 +54,8 @@ export default function EventForm({ admin }) {
     };
 
     return (
-        <div>
-            <h2>Crear eventos</h2>
+        <div className={styles.container}>
+            <h2 className={styles.title}>Crear eventos</h2>
             <form onSubmit={handleSubmit} className={styles.form}>
                 <label htmlFor="title">
                     Titulo
@@ -73,24 +76,7 @@ export default function EventForm({ admin }) {
                     imagesUploaded={imagesUploaded}
                     setImagesUploaded={setImagesUploaded}
                 />
-                <div
-                    style={{
-                        display: "flex",
-                        padding: "1rem 0",
-                        justifyContent: "space-between",
-                    }}
-                >
-                    {imagesUploaded.length > 0 &&
-                        imagesUploaded.map((img, i) => (
-                            <Image
-                                src={img}
-                                alt="Imagen del evento por subir"
-                                width={50}
-                                height={50}
-                                key={i}
-                            />
-                        ))}
-                </div>
+                <br />
                 <button disabled={isSending === true || !readyForSend}>
                     Crear
                 </button>

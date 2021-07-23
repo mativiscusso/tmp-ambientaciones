@@ -1,0 +1,50 @@
+$base-spacing-unit: 24px;
+$half-spacing-unit: $base-spacing-unit / 2;
+
+$color-alpha: #1772ff;
+$color-form-highlight: #eeeeee67;
+$color-form-highlight2: #eeeeee2a;
+
+.table {
+    width: 100%;
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: 200;
+    // border: 1px solid $color-form-highlight;
+    thead {
+        background: #000;
+        padding: ($half-spacing-unit * 1.5) 0;
+        tr {
+            th {
+                font-weight: 800;
+                text-transform: uppercase;
+                color: #fff;
+            }
+        }
+    }
+    tbody {
+        tr {
+            width: 100%;
+            padding: ($half-spacing-unit * 1.5) 0;
+            &:nth-of-type(odd) {
+                background: $color-form-highlight;
+            }
+            &:nth-of-type(even) {
+                background: $color-form-highlight2;
+            }
+        }
+    }
+    button {
+        background: transparent;
+        padding: 8px 0;
+        width: 80px;
+        margin: 0 1rem;
+        border: 1px solid #000;
+        border-radius: 5px;
+        font-weight: 600;
+        text-transform: uppercase;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
