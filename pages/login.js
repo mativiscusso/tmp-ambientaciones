@@ -3,6 +3,7 @@ import styles from "../styles/Login.module.scss";
 import { useRouter } from "next/dist/client/router";
 import { signInUserAdmin } from "../firebase/client";
 import Layout from "components/Layout";
+import Loading from "components/Loading";
 
 const INITIAL_STATE = {
     username: "",
@@ -12,6 +13,7 @@ const INITIAL_STATE = {
 const Login = () => {
     const [formData, setFormData] = useState(INITIAL_STATE);
     const [loginMessage, setLoginMessage] = useState(undefined);
+    const [loading, setLoading] = useState(false);
 
     const router = useRouter();
 
@@ -19,12 +21,15 @@ const Login = () => {
         setFormData({ ...formData, [evt.target.name]: evt.target.value });
     };
     const handleSubmit = async (evt) => {
+        setLoading(true);
         evt.preventDefault();
 
         const result = await signInUserAdmin(formData);
         if (result.email) {
+            setLoading(false);
             router.push("/admin");
         } else {
+            setLoading(false);
             setLoginMessage(result.errorMessage);
         }
     };
@@ -49,7 +54,16 @@ const Login = () => {
                             onChange={handleChange}
                         />
                     </label>
-                    <button>Ingresar</button>
+                    <button
+                        style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }}
+                    >
+                        {loading && <Loading />}
+                        Ingresar
+                    </button>
                 </form>
                 {loginMessage && <small>{loginMessage}</small>}
             </div>

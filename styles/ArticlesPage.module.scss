@@ -3,8 +3,48 @@
 .article {
     background-color: $red;
     min-height: 100vh;
+    section {
+        padding: 0 1rem !important;
+    }
     p {
         word-wrap: break-word;
     }
+    h1 {
+        font-size: 2rem;
+        font-family: $titleFont;
+    }
     padding: 7rem 1rem 2rem 1rem;
+}
+.postImage {
+    height: 200px;
+}
+
+// @media (min-width: $screen-md) {
+// }
+@media (min-width: $screen-lg) {
+    .article {
+        padding-top: 12rem !important;
+
+        section {
+            padding: 2.5rem;
+        }
+        h1 {
+            font-size: 3.5rem;
+            margin: 2rem 0 1rem 0;
+        }
+        p {
+            font-size: 1.5rem;
+        }
+        .postImage {
+            height: 400px;
+        }
+    }
+}
+
+@media (min-width: $screen-xl) {
+    .article {
+        .postImage {
+            height: 600px;
+        }
+    }
 }

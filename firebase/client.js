@@ -146,7 +146,9 @@ export const uploadMultipleImages = async (images) => {
         const uploadTask = firebase
             .storage()
             .ref()
-            .child(`images/${file.name}`)
+            .child(
+                `images/${file.name}?width.${file.width}height.${file.height}`
+            )
             .put(file);
         promises.push(uploadTask);
         uploadTask.on(
@@ -184,7 +186,8 @@ export const getDocumentOfCollection = (id, collectionName) => {
         .then((result) => {
             const data = result.data();
             const id = result.id;
-            return { ...data, id };
+            const { createdAt } = data;
+            return { ...data, id, createdAt: +createdAt.toDate() };
         })
 
         .catch((err) => {

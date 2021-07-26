@@ -1,32 +1,14 @@
 import styles from "./Accordion.module.scss";
 import TitleSection from "components/TitleSection";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { fetchCategoryEvent } from "firebase/client";
 
-export default function Accordion() {
-    const [eventsName, setEventsName] = useState(undefined);
-
-    useEffect(() => {
-        fetchCategoryEvent()
-            .then((result) => {
-                const categoriesFiltered = result.filter(
-                    (category) =>
-                        category.name !== "interiorismo" &&
-                        category.name !== "editoriales"
-                );
-                setEventsName(categoriesFiltered);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
+export default function Accordion({ categories }) {
     return (
         <>
             <TitleSection text="nuestros trabajos" size="48px" />
             <div className={styles.container}>
-                {eventsName &&
-                    eventsName.map((event) => (
+                {categories &&
+                    categories.map((event) => (
                         <div key={event.id} className={styles.box}>
                             <Link href={`/jobs/${event.name}`}>
                                 <a>

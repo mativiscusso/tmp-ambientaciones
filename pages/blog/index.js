@@ -1,12 +1,12 @@
+import { fetchLastestPosts } from "firebase/client";
+
 import Layout from "components/Layout";
 import HeaderPages from "components/HeaderPages";
-import styles from "styles/Blog.module.scss";
 import CardBlog from "components/CardBlog";
-import usePosts from "hooks/usePosts";
 
-export default function BlogPage() {
-    const posts = usePosts();
+import styles from "styles/Blog.module.scss";
 
+function BlogPage({ posts }) {
     return (
         <Layout>
             <main className={styles.blog}>
@@ -26,3 +26,20 @@ export default function BlogPage() {
         </Layout>
     );
 }
+
+export async function getServerSideProps() {
+    try {
+        const posts = await fetchLastestPosts();
+
+        return {
+            props: { posts },
+        };
+    } catch (error) {
+        console.log(error);
+        return {
+            props: { posts: [] },
+        };
+    }
+}
+
+export default BlogPage;

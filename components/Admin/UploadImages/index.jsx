@@ -2,23 +2,41 @@
 import { useState } from "react";
 import { uploadMultipleImages } from "firebase/client";
 import styles from "./UploadImage.module.scss";
+import Loading from "components/Loading";
 
 export default function UploadImage({ imagesUploaded, setImagesUploaded }) {
     const [files, setFiles] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const onFileChange = (e) => {
         for (let i = 0; i < e.target.files.length; i++) {
             const newFile = e.target.files[i];
             newFile["id"] = Math.random().toString();
             newFile["preview"] = URL.createObjectURL(e.target.files[i]);
+            /*I want know width and height to image to upload */
+            const img = new Image();
+            img.src = newFile["preview"];
+            img.onload = () => {
+                newFile["width"] = img.width;
+                newFile["height"] = img.height;
+            };
             setFiles((prevState) => [...prevState, newFile]);
+            console.log(newFile);
         }
     };
+    console.log(files);
 
     const onUploadSubmission = async (evt) => {
+        setLoading(true);
         evt.preventDefault();
-        const images = await uploadMultipleImages(files);
-        setImagesUploaded(images);
+        try {
+            const images = await uploadMultipleImages(files);
+            console.log(images);
+            setImagesUploaded(images);
+            setLoading(false);
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     const handleDeleteImage = (evt) => {
@@ -27,7 +45,6 @@ export default function UploadImage({ imagesUploaded, setImagesUploaded }) {
             prevState.filter((file) => file.id !== imageToDelete)
         );
     };
-
     return (
         <>
             <label htmlFor="input-file" className={styles.inputLabel}>
@@ -43,7 +60,7 @@ export default function UploadImage({ imagesUploaded, setImagesUploaded }) {
             <div className={styles.imagesZone}>
                 {files.length > 0 &&
                     files.map((img, i) => (
-                        <div key={i} styles={{position:"relative"}}>
+                        <div key={i} styles={{ position: "relative" }}>
                             <a
                                 onClick={handleDeleteImage}
                                 id={img.id}
@@ -54,8 +71,7 @@ export default function UploadImage({ imagesUploaded, setImagesUploaded }) {
                             <img
                                 src={img.preview}
                                 alt={img.name}
-                                width={50}
-                                height={50}
+                                style={{ width: 40 }}
                             />
                         </div>
                     ))}
@@ -64,8 +80,14 @@ export default function UploadImage({ imagesUploaded, setImagesUploaded }) {
             <button
                 onClick={onUploadSubmission}
                 disabled={files.length <= 0 || imagesUploaded.length >= 1}
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}
             >
-                Upload
+                {loading && <Loading />}
+                Subir imágenes
             </button>
         </>
     );

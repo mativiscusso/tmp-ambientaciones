@@ -4,6 +4,7 @@ import styles from "./PostForm.module.scss";
 import UploadImages from "../UploadImages";
 import { addPost } from "firebase/client";
 import { useRouter } from "next/router";
+import Loading from "components/Loading";
 
 const INITIAL_STATE = {
     title: "",
@@ -52,7 +53,7 @@ export default function PostForm() {
             });
     };
 
-    console.log({ imagesUploaded, readyForSend });
+    console.log(imagesUploaded, readyForSend); //TODO mejorar el disabled del boton
     return (
         <div className={styles.container}>
             <h2 className={styles.title}>Crear Posteos</h2>
@@ -75,7 +76,17 @@ export default function PostForm() {
                     setImagesUploaded={setImagesUploaded}
                 />
                 <br />
-                <button disabled={!readyForSend || isSending}>Crear</button>
+                <button
+                    disabled={!readyForSend || isSending}
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                    }}
+                >
+                    {isSending && <Loading />}
+                    Crear
+                </button>
             </form>
         </div>
     );

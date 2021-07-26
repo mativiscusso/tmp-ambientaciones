@@ -37,10 +37,10 @@
         text-transform: uppercase;
         position: absolute;
         top: 50%;
-        left: 45%;
-        transform: translate(-45%, -50%);
+        left: 50%;
+        transform: translate(-50%, -50%);
         z-index: 1;
-        width: 150px;
+        letter-spacing: 2px;
     }
 }
 .container {
@@ -56,13 +56,6 @@
         }
         .imgHeaderMobile {
             display: none;
-        }
-        .textHeader {
-            svg {
-                top: 50%;
-                transform: translate(-60%, -50%);
-                width: 300px;
-            }
         }
     }
     .container {

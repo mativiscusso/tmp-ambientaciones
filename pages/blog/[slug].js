@@ -1,32 +1,39 @@
-import { useRouter } from "next/router";
 import Layout from "components/Layout";
 import styles from "styles/ArticlesPage.module.scss";
-import Image from "next/image";
-import usePost from "hooks/usePost";
+import { getDocumentOfCollection } from "firebase/client";
 
-export default function ArticlePage() {
-    const router = useRouter();
-    const { slug } = router.query;
-    const post = usePost(slug);
-
+export default function ArticlePage({ post, image }) {
     return (
         <Layout>
             <main className={styles.article}>
-                {post && (
-                    <section>
-                        <Image
-                            src={post.images && post.images[0]}
-                            alt={post.title}
-                            layout="responsive"
-                            width={100}
-                            height={100}
-                            styles={{ width: "100%", height: "100%" }}
-                        />
-                        <h1>{post.title}</h1>
-                        <p>{post.content}</p>
-                    </section>
-                )}
+                <article
+                    style={{
+                        backgroundImage: `url(${image})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                    }}
+                    className={styles.postImage}
+                ></article>
+                <section>
+                    <h1>{post.title}</h1>
+                    <p>{post.content}</p>
+                </section>
             </main>
         </Layout>
     );
+}
+
+export async function getServerSideProps({ params }) {
+    const { slug } = params;
+    try {
+        const post = await getDocumentOfCollection(slug, "posts");
+        return {
+            props: { post, image: post.images[0] },
+        };
+    } catch (error) {
+        console.log(error);
+        return {
+            props: { post: [] },
+        };
+    }
 }

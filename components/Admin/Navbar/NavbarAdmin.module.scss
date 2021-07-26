@@ -5,20 +5,31 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 0 1rem;
     font-family: $titleFont;
-    font-size: 18px;
+    font-size: 12px;
     font-weight: 400;
     color: $black;
     a {
-        &:first-child {
-            font-size: 20px;
-            color: $white;
-        }
+        text-transform: uppercase;
+
         &:hover {
             cursor: pointer;
             filter: invert(1);
         }
+    }
+}
+.secondNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem 1rem 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 2px rgba(0, 0, 0, 0.1);
+
+    & > div {
+        display: flex;
+        align-items: center;
     }
     button {
         background-color: transparent;
@@ -26,10 +37,23 @@
         font-family: $titleFont;
         font-size: 1rem;
         padding: 4px 8px;
+        margin-left: 12px;
         &:hover {
             cursor: pointer;
             filter: invert(1);
         }
     }
-    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: $screen-lg) {
+    .nav {
+        font-size: 22px;
+    }
+    .secondNav {
+        justify-content: flex-end;
+        box-shadow: none;
+    }
+}
+
+@media (min-width: $screen-xl) {
 }

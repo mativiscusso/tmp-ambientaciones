@@ -3,8 +3,8 @@ import { addEvent } from "firebase/client";
 import EventCategoryList from "../EventCategoryList";
 import UploadImages from "../UploadImages";
 import styles from "./EventForm.module.scss";
-import Image from "next/image";
 import { useRouter } from "next/router";
+import Loading from "components/Loading";
 
 const INITIAL_STATE = {
     title: "",
@@ -77,7 +77,15 @@ export default function EventForm({ admin }) {
                     setImagesUploaded={setImagesUploaded}
                 />
                 <br />
-                <button disabled={isSending === true || !readyForSend}>
+                <button
+                    disabled={isSending === true || !readyForSend}
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                    }}
+                >
+                    {isSending && <Loading />}
                     Crear
                 </button>
             </form>

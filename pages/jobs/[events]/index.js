@@ -1,14 +1,10 @@
+import { fetchFilterEvents } from "firebase/client";
 import HeaderPages from "components/HeaderPages";
 import CardEvents from "components/CardEvents";
-import useEvents from "hooks/useEvents";
-import { useRouter } from "next/router";
 import Layout from "components/Layout";
 import styles from "styles/EventsPage.module.scss";
 
-export default function EventsPage() {
-    const router = useRouter();
-    const { events: eventQuery } = router.query;
-    const events = useEvents("category", eventQuery);
+function EventsPage({ events, eventQuery }) {
     return (
         <Layout>
             <main className={styles.events}>
@@ -21,3 +17,16 @@ export default function EventsPage() {
         </Layout>
     );
 }
+
+export async function getServerSideProps({ params }) {
+    const { events: eventQuery } = params;
+    try {
+        const events = await fetchFilterEvents("category", eventQuery);
+        return { props: { events, eventQuery } };
+    } catch (error) {
+        console.log(error);
+        return { props: { events: [] } };
+    }
+}
+
+export default EventsPage;

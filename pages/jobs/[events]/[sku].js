@@ -1,25 +1,33 @@
 import HeaderPages from "components/HeaderPages";
-import { useRouter } from "next/router";
 import Layout from "components/Layout";
-import useEvent from "hooks/useEvent";
 import styles from "styles/EventsPage.module.scss";
 import GalleryImages from "components/GalleryImages";
 import formatArrayEventsToGallery from "helpers";
+import { getDocumentOfCollection } from "firebase/client";
 
-export default function EventPage() {
-    const router = useRouter();
-    const { sku } = router.query;
-    const event = useEvent(sku);
+function EventPage({ event }) {
     return (
         <Layout>
             <main className={styles.events}>
-                <HeaderPages title={event?.title} />
-                {event && (
-                    <GalleryImages
-                        photos={formatArrayEventsToGallery(event?.images)}
-                    />
-                )}
+                <HeaderPages title={event.title} />
+
+                <GalleryImages
+                    photos={formatArrayEventsToGallery(event.images)}
+                />
             </main>
         </Layout>
     );
 }
+
+export async function getServerSideProps({ params }) {
+    const { sku } = params;
+    try {
+        const event = await getDocumentOfCollection(sku, "events");
+        return { props: { event } };
+    } catch (error) {
+        console.log(error);
+        return { props: { event: "" } };
+    }
+}
+
+export default EventPage;

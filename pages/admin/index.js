@@ -15,7 +15,6 @@ export default function AdminPage() {
                 <>
                     <NavbarAdmin />
                     <div className={styles.container}>
-                        <h1>Hola, Admin</h1>
                         <EventList admin={admin} />
                         <br />
                         <PostList admin={admin} />
