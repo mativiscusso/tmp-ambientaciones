@@ -9,9 +9,9 @@ import Video from "components/Video";
 import { fetchCategoryEvent } from "firebase/client";
 import EditorialesTitle from "components/CustomTitles/Editoriales";
 
-// const videoUrl = "/video/header_video_tmp.mp4";
+const videoUrl = "/video/header_video_tmp.mp4";
 
-export default function Home({ categories, videoUrl }) {
+export default function Home({ categories }) {
     return (
         <Layout>
             <header className={styles.header}>
@@ -52,7 +52,7 @@ export async function getStaticProps() {
                 category.name !== "interiorismo" &&
                 category.name !== "editoriales"
         );
-        return { props: { categories: categoriesFiltered, videoUrl } };
+        return { props: { categories: categoriesFiltered } };
     } catch (error) {
         console.log(error);
         return { props: { categories: [] } };
