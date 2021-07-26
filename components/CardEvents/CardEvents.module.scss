@@ -13,6 +13,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 1rem;
+        text-align: center;
         p {
             font-family: $titleFont;
             font-size: 1.5rem;
@@ -28,6 +30,15 @@
             position: absolute;
             z-index: 1;
             top: 0;
+        }
+    }
+}
+
+@media (min-width: $screen-lg) {
+    .wrapper {
+        .card {
+            width: 30%;
+            height: 250px;
         }
     }
 }
