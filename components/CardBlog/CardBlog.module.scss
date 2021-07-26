@@ -51,9 +51,10 @@
 }
 @media (min-width: $screen-lg) {
     .cardBlog {
+        padding-bottom: 2rem;
         .image {
             width: 15%;
-            height: 200px;
+            height: 180px;
         }
         .body {
             padding: 1.5rem 2.5rem;

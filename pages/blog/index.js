@@ -11,17 +11,19 @@ function BlogPage({ posts }) {
         <Layout>
             <main className={styles.blog}>
                 <HeaderPages title="Blog" />
-                {posts &&
-                    posts.map((post) => (
-                        <CardBlog
-                            key={post.id}
-                            id={post.id}
-                            title={post.title}
-                            date={post.createdAt}
-                            content={post.content}
-                            images={post.images}
-                        />
-                    ))}
+                <div className={styles.container}>
+                    {posts &&
+                        posts.map((post) => (
+                            <CardBlog
+                                key={post.id}
+                                id={post.id}
+                                title={post.title}
+                                date={post.createdAt}
+                                content={post.content}
+                                images={post.images}
+                            />
+                        ))}
+                </div>
             </main>
         </Layout>
     );
