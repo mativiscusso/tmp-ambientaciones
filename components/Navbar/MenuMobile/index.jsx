@@ -2,7 +2,7 @@ import React from "react";
 import { push as Menu } from "react-burger-menu";
 import Link from "next/link";
 import Image from "next/image";
-import logoTmp from "svg/logo.svg";
+import logoTmp from "assets/svg/logo.svg";
 import Navlinks from "../Navlinks";
 
 const index = (props) => {

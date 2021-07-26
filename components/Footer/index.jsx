@@ -1,7 +1,7 @@
 import Image from "next/image";
-import logo from "svg/logo.svg";
-import instagram from "svg/instagram.svg";
-import facebook from "svg/facebook.svg";
+import logo from "assets/svg/logo.svg";
+import instagram from "assets/svg/instagram.svg";
+import facebook from "assets/svg/facebook.svg";
 import Link from "next/link";
 import styles from "./Footer.module.scss";
 

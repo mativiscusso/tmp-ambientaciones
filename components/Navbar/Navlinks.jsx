@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import logoTmp from "svg/logo.svg";
+import logoTmp from "assets/svg/logo.svg";
 import styles from "./Navbar.module.scss";
 
 export default function Navlinks({ isMobile }) {

@@ -13,6 +13,7 @@
             transform: translate(-50%, -50%);
             z-index: 1;
             width: 180px;
+            filter: drop-shadow(2px 3px 3px rgba(0, 0, 0, 0.897));
         }
     }
     video {
@@ -30,17 +31,13 @@
     position: relative;
     padding: 2rem 0;
     margin-top: 4rem;
-    h2 {
-        font-size: 2rem;
-        font-family: $titleFont;
-        color: $white;
-        text-transform: uppercase;
+    svg {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 1;
-        letter-spacing: 2px;
+        filter: drop-shadow(2px 3px 3px rgba(0, 0, 0, 0.897));
     }
 }
 .container {
@@ -56,6 +53,11 @@
         }
         .imgHeaderMobile {
             display: none;
+        }
+        .textHeader {
+            svg {
+                width: 500px;
+            }
         }
     }
     .container {

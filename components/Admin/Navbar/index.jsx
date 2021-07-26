@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import styles from "./NavbarAdmin.module.scss";
 import { useState } from "react";
 import UserIcon from "components/Icons/User";
-import logoTmp from "svg/logo.svg";
+import logoTmp from "assets/svg/logo.svg";
 import Image from "next/image";
 
 export default function NavbarAdmin() {

@@ -7,6 +7,7 @@ import Layout from "components/Layout";
 import Link from "next/link";
 import Video from "components/Video";
 import { fetchCategoryEvent } from "firebase/client";
+import EditorialesTitle from "components/CustomTitles/Editoriales";
 
 // const videoUrl = "/video/header_video_tmp.mp4";
 
@@ -30,7 +31,7 @@ export default function Home({ categories, videoUrl }) {
                                 alt="header banner"
                             />
                             <div className={styles.textHeader}>
-                                <h2>editoriales</h2>
+                                <EditorialesTitle color="#fff" />
                             </div>
                         </a>
                     </Link>
