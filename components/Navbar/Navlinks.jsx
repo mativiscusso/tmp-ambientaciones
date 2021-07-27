@@ -29,8 +29,8 @@ export default function Navlinks({ isMobile }) {
                         <Image
                             src={logoTmp}
                             alt="Logo tmp"
-                            width={80}
-                            height={80}
+                            width={110}
+                            height={110}
                         />
                     </a>
                 </Link>

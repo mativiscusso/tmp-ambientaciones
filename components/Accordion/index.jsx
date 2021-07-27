@@ -18,7 +18,6 @@ function TitleAccordion({ title }) {
 export default function Accordion({ categories }) {
     return (
         <>
-            <TitleSection text="nuestros trabajos" size="48px" />
             <div className={styles.container}>
                 {categories &&
                     categories.map((event) => (
