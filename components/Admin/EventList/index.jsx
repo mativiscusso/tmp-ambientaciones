@@ -32,7 +32,6 @@ export default function EventList({ admin }) {
     const handleEdit = async (evt) => {
         const id = evt.currentTarget.id;
         const event = await getDocumentOfCollection(id, "events");
-        console.log(event);
     };
 
     return (

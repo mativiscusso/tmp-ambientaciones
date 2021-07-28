@@ -6,11 +6,20 @@ firebase.apps.length === 0 && firebase.initializeApp(firebaseConfig);
 firebase.apps.length === 0 && firebase.analytics();
 const db = firebase.firestore();
 
+export const signinWithEmailAndPassword = async (email, password) => {
+    const persistence = firebase.auth.Auth.Persistence.LOCAL;
+
+    await firebase.auth().setPersistence(persistence);
+
+    return firebase.auth().signInWithEmailAndPassword(email, password);
+};
+
 export const signInUserAdmin = async ({ username, password }) => {
     try {
-        const userCredentials = await firebase
-            .auth()
-            .signInWithEmailAndPassword(username, password);
+        const userCredentials = await signinWithEmailAndPassword(
+            username,
+            password
+        );
         return userCredentials.user;
     } catch (error) {
         const errorCode = error.code;
@@ -28,7 +37,7 @@ export const signOutUserAdmin = async () => {
     }
 };
 
-export const onAuthStateChanged = (onChange) => {
+export const onAuthStateChanged = () => {
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
             const currentUser = {
@@ -36,7 +45,9 @@ export const onAuthStateChanged = (onChange) => {
                 email: user.email,
                 id: user.uid,
             };
-            onChange(currentUser);
+            return currentUser;
+        } else {
+            return null;
         }
     });
 };
@@ -85,7 +96,6 @@ export const fetchFilterEvents = (fieldToFilter, valueToFilter) => {
         .where(fieldToFilter, "==", valueToFilter)
         .get()
         .then(({ docs }) => {
-            console.log(docs);
             return docs.map((doc) => {
                 const data = doc.data();
                 const id = doc.id;

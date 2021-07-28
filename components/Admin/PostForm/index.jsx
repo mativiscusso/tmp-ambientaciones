@@ -53,7 +53,6 @@ export default function PostForm() {
             });
     };
 
-    console.log(imagesUploaded, readyForSend); //TODO mejorar el disabled del boton
     return (
         <div className={styles.container}>
             <h2 className={styles.title}>Crear Posteos</h2>

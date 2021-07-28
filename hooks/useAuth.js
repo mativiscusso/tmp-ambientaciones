@@ -1,12 +1,28 @@
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/client";
+import firebase from "firebase";
 
-export default function useAuth(admin, loading) {
+export default function useAuth() {
     const router = useRouter();
+    const [admin, setAdmin] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if (admin === null && loading === false) {
-            return router.push("/login");
-        }
-    }, [admin, router, loading]);
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                const currentUser = {
+                    username: user.displayName,
+                    email: user.email,
+                    id: user.uid,
+                };
+                setAdmin(currentUser);
+                setLoading(false);
+            } else {
+                return router.push("/login");
+            }
+        });
+    }, [router]);
+
+    return { admin, loading };
 }

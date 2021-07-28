@@ -5,11 +5,8 @@ import useAuth from "hooks/useAuth";
 import NavbarAdmin from "components/Admin/Navbar";
 import PostList from "components/Admin/PostList";
 
-//TODO SSR en el admin
-
 export default function AdminPage() {
-    const [admin, loading] = useAdmin();
-    useAuth(admin, loading);
+    const { admin, loading } = useAuth();
 
     return (
         <div className={styles.admin}>

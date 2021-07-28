@@ -12,7 +12,6 @@ import EditorialesTitle from "components/CustomTitles/Editoriales";
 const videoUrl = "/video/header_video_tmp.mp4";
 
 export default function Home({ categories, editoriales }) {
-    console.log(editoriales);
     return (
         <Layout>
             <header className={styles.header}>

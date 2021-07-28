@@ -34,7 +34,6 @@ export default function PostList({ admin }) {
     const handleEdit = async (evt) => {
         const id = evt.currentTarget.id;
         const event = await getDocumentOfCollection(id, "posts");
-        console.log(event);
     };
 
     /* Implement function to format date in spanish */

@@ -5,8 +5,7 @@ import useAuth from "hooks/useAuth";
 import NavbarAdmin from "components/Admin/Navbar";
 
 export default function CreateEventsPage() {
-    const [admin, loading] = useAdmin();
-    useAuth(admin, loading);
+    const { admin, loading } = useAuth();
 
     return (
         <div className={styles.admin}>

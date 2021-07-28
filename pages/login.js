@@ -1,7 +1,7 @@
 import { useState } from "react";
-import styles from "../styles/Login.module.scss";
+import styles from "styles/Login.module.scss";
 import { useRouter } from "next/dist/client/router";
-import { signInUserAdmin } from "../firebase/client";
+import { signInUserAdmin } from "firebase/client";
 import Layout from "components/Layout";
 import Loading from "components/Loading";
 

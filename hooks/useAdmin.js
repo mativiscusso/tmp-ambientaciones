@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { onAuthStateChanged } from "../firebase/client";
+import { onAuthStateChanged } from "firebase/client";
 
 export default function useAdmin() {
     const [admin, setAdmin] = useState(null);
@@ -7,9 +7,7 @@ export default function useAdmin() {
 
     useEffect(() => {
         onAuthStateChanged(setAdmin);
-        setTimeout(() => {
-            setLoading(false);
-        }, 500);
+        setLoading(false);
     }, []);
 
     return [admin, loading];

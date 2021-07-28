@@ -21,17 +21,14 @@ export default function UploadImage({ imagesUploaded, setImagesUploaded }) {
                 newFile["height"] = img.height;
             };
             setFiles((prevState) => [...prevState, newFile]);
-            console.log(newFile);
         }
     };
-    console.log(files);
 
     const onUploadSubmission = async (evt) => {
         setLoading(true);
         evt.preventDefault();
         try {
             const images = await uploadMultipleImages(files);
-            console.log(images);
             setImagesUploaded(images);
             setLoading(false);
         } catch (error) {
