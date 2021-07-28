@@ -5,6 +5,13 @@
     margin-bottom: 1rem;
     .textHeader {
         padding: 0 1rem;
+        svg {
+            position: absolute;
+            bottom: 0rem;
+            left: 1rem;
+            z-index: 2;
+            width: 60%;
+        }
         h1 {
             position: absolute;
             bottom: 0rem;
@@ -14,7 +21,16 @@
             font-size: 2rem;
             color: $white;
             text-transform: uppercase;
-            letter-spacing: 0.1rem;
+        }
+        h2 {
+            position: absolute;
+            bottom: 0rem;
+            left: 1rem;
+            z-index: 2;
+            font-family: $textFont;
+            font-size: 2rem;
+            color: $white;
+            text-transform: uppercase;
         }
         p {
             color: $white;
@@ -45,11 +61,18 @@
     .header {
         margin-bottom: 0;
         .textHeader {
-            h1 {
-                font-size: 5rem;
-                bottom: 1.5rem;
+            svg {
+                width: 40%;
+                bottom: 4.5rem;
                 left: 2rem;
             }
+            h1,
+            h2 {
+                bottom: 4rem;
+                left: 4rem;
+                font-size: 4rem;
+            }
+
             p {
                 font-size: 2rem;
                 bottom: 1rem;
@@ -65,8 +88,16 @@
     }
 }
 
-@media (min-width: 1340px) {
+@media (min-width: 1400px) {
     .container {
         padding: 14rem 2rem;
+    }
+    .header {
+        .textHeader {
+            h1,
+            h2 {
+                left: 20%;
+            }
+        }
     }
 }

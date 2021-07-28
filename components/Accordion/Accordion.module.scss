@@ -30,31 +30,7 @@
             z-index: 1;
             top: 0;
         }
-        &:nth-child(1) {
-            background-image: url("/images/bodas.jpg");
-            background-size: cover;
-            background-position: center;
-        }
-        &:nth-child(2) {
-            background-image: url("/images/editorial.jpg");
-            background-size: cover;
-            background-position: center;
-        }
-        &:nth-child(3) {
-            background-image: url("/images/home.jpg");
-            background-size: cover;
-            background-position: center;
-        }
-        &:nth-child(4) {
-            background-image: url("/images/empresarial.jpg");
-            background-size: cover;
-            background-position: center;
-        }
-        &:nth-child(5) {
-            background-image: url("/images/social.jpg");
-            background-size: cover;
-            background-position: center;
-        }
+
         a {
             & > span {
                 font-size: 3.8vh;

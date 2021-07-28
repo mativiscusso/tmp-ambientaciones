@@ -2,7 +2,6 @@ import Link from "next/link";
 import styles from "./CardEvents.module.scss";
 
 export default function CardEvents({ events }) {
-    console.log(events);
     return (
         <div className={styles.wrapper}>
             {events &&

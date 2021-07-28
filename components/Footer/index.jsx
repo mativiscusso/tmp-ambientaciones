@@ -5,9 +5,13 @@ import facebook from "assets/svg/facebook.svg";
 import Link from "next/link";
 import styles from "./Footer.module.scss";
 
-export default function Footer() {
+export default function Footer({ isHomeDesign }) {
     return (
-        <footer className={styles.footer} id="contacto">
+        <footer
+            className={styles.footer}
+            id="contacto"
+            style={{ backgroundColor: !isHomeDesign ? "#ee3123" : "#7c3127" }}
+        >
             <div className={styles.items}>
                 <p className={styles.marca}>
                     <Image src={logo} width={40} height={40} alt="logo TMP" />
@@ -15,44 +19,75 @@ export default function Footer() {
                 </p>
                 <p>Calle falsa 123 - Rosario - Argentina</p>
                 <p>email@email.com</p>
-                <span>
+                <div style={{ display: "flex", alignItems: "center" }}>
                     <Image
                         src={instagram}
                         width={30}
                         height={30}
                         alt="logo TMP"
                     />
+                    <Link href="https://www.instagram.com/tmpambientaciones">
+                        <a>Organización de bodas</a>
+                    </Link>
+                </div>
+                <div style={{ display: "flex", alignItems: "center" }}>
                     <Image
-                        src={facebook}
+                        src={instagram}
                         width={30}
                         height={30}
                         alt="logo TMP"
                     />
-                </span>
+                    <Link href="https://www.instagram.com/tmphomestaging/">
+                        <a>Home staging</a>
+                    </Link>
+                </div>
             </div>
             <div className={styles.items}>
                 <p>
-                    <Link href="/">
+                    <Link href="/nosotros">
                         <a>¿Qué hacemos?</a>
                     </Link>
                 </p>
                 <p>
-                    <Link href="/">
+                    <Link href="/blog">
                         <a>Blog</a>
                     </Link>
                 </p>
                 <p>
-                    <Link href="/">
-                        <a>Nuestros trabajos</a>
-                    </Link>
-                </p>
-                <p>
-                    <Link href="/">
+                    <Link href="/#contacto">
                         <a>Contacto</a>
                     </Link>
                 </p>
+                <p>
+                    <Link href="/jobs/interiorismo">
+                        <a>Interiorismo</a>
+                    </Link>
+                </p>
             </div>
-            <div className={styles.items}>Google Form LINK</div>
+            <div
+                className={styles.items}
+                style={{ display: "flex", flexDirection: "column" }}
+            >
+                <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSc-4XwzzyeV-myNMBP3R1xSZt5EHMI9y08TSvL4I4UVNIr2hQ/viewform?vc=0&c=0&w=1&flr=0
+"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.formLink}
+                >
+                    Presupuestar boda
+                </a>
+
+                <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSc-4XwzzyeV-myNMBP3R1xSZt5EHMI9y08TSvL4I4UVNIr2hQ/viewform?vc=0&c=0&w=1&flr=0
+"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.formLink}
+                >
+                    Presupuestar home
+                </a>
+            </div>
         </footer>
     );
 }

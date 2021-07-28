@@ -1,14 +1,14 @@
 import styles from "./Accordion.module.scss";
-import TitleSection from "components/TitleSection";
 import Link from "next/link";
 import BodasTitle from "components/CustomTitles/Bodas";
-import EmpresarialTitle from "components/CustomTitles/Empresarial";
+import CorporativosTitle from "components/CustomTitles/Corporativos";
 import SocialTitle from "components/CustomTitles/Social";
+import Image from "next/image";
 
 function TitleAccordion({ title }) {
     const items = {
         bodas: <BodasTitle color="#fff" />,
-        empresarial: <EmpresarialTitle color="#fff" />,
+        corporativos: <CorporativosTitle color="#fff" />,
         social: <SocialTitle color="#fff" />,
     };
 
@@ -22,6 +22,12 @@ export default function Accordion({ categories }) {
                 {categories &&
                     categories.map((event) => (
                         <div key={event.id} className={styles.box}>
+                            <Image
+                                src={event.image}
+                                alt={event.name}
+                                layout="fill"
+                                objectFit="cover"
+                            />
                             <Link href={`/jobs/${event.name}`}>
                                 <a>
                                     <span>

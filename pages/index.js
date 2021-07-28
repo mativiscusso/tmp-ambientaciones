@@ -1,5 +1,5 @@
 import Image from "next/image";
-import headerImgDesktop from "assets/images/header.jpg";
+import headerImgDesktop from "assets/images/editorial.jpg";
 import styles from "../styles/Home.module.scss";
 import Accordion from "components/Accordion";
 import RockVector from "components/RockVector";
@@ -11,7 +11,8 @@ import EditorialesTitle from "components/CustomTitles/Editoriales";
 
 const videoUrl = "/video/header_video_tmp.mp4";
 
-export default function Home({ categories }) {
+export default function Home({ categories, editoriales }) {
+    console.log(editoriales);
     return (
         <Layout>
             <header className={styles.header}>
@@ -26,8 +27,9 @@ export default function Home({ categories }) {
                     <Link href="/jobs/editoriales">
                         <a>
                             <Image
-                                src={headerImgDesktop}
-                                layout="responsive"
+                                src={editoriales[0].image}
+                                layout="fill"
+                                objectFit="cover"
                                 alt="header banner"
                             />
                             <div className={styles.textHeader}>
@@ -42,9 +44,6 @@ export default function Home({ categories }) {
 }
 
 export async function getStaticProps() {
-    const videoUrl =
-        "https://firebasestorage.googleapis.com/v0/b/tmp-ambientaciones.appspot.com/o/video%2Fshooting_backstage_TMPweb2.mp4?alt=media&token=de3f9735-9682-44dd-a393-73ee1fa594e0";
-
     try {
         const categories = await fetchCategoryEvent();
         const categoriesFiltered = categories.filter(
@@ -52,7 +51,20 @@ export async function getStaticProps() {
                 category.name !== "interiorismo" &&
                 category.name !== "editoriales"
         );
-        return { props: { categories: categoriesFiltered } };
+
+        const editoriales = categories.filter(
+            (category) => category.name === "editoriales"
+        );
+        const interiorismo = categories.filter(
+            (category) => category.name === "interiorismo"
+        );
+        return {
+            props: {
+                categories: categoriesFiltered,
+                editoriales: editoriales,
+                interiorismo: interiorismo,
+            },
+        };
     } catch (error) {
         console.log(error);
         return { props: { categories: [] } };

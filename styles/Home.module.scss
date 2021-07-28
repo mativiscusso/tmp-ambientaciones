@@ -31,6 +31,7 @@
     position: relative;
     padding: 2rem 0;
     margin-top: 4rem;
+    height: 200px;
     svg {
         position: absolute;
         top: 50%;
@@ -65,6 +66,8 @@
         padding: 8rem 2rem;
     }
     .editoriales {
+        height: 400px;
+
         &:hover {
             transition: filter 0.2s ease-in-out;
             filter: brightness(1.2);
@@ -86,5 +89,8 @@
                 width: 500px;
             }
         }
+    }
+    .editoriales {
+        height: 600px;
     }
 }

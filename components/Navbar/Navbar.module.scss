@@ -16,7 +16,7 @@
     }
     transition: all 0.3s ease-in;
     .interiorismoBtn {
-        background-color: brown;
+        background-color: $brown;
         padding: 5px 8px;
     }
 }
@@ -31,6 +31,12 @@
         .navbarLinks {
             display: flex;
             margin: auto;
+            img {
+                transition: transform 0.1s ease-in;
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
             ul {
                 display: flex;
                 justify-content: space-between;
@@ -46,6 +52,8 @@
                         &:hover {
                             transition: color 0.1s ease-in;
                             color: $red;
+                            font-weight: bold;
+                            text-decoration: wavy;
                         }
                     }
                 }
