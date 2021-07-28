@@ -49,7 +49,7 @@
 
 @media (min-width: 1024px) {
     .header {
-        height: 85vh;
+        height: 100vh;
         .imgHeaderDesktop {
             display: block;
         }
@@ -60,6 +60,10 @@
             svg {
                 width: 350px;
             }
+        }
+        video {
+            top: -55px;
+            position: absolute;
         }
     }
     .container {
@@ -88,6 +92,9 @@
             svg {
                 width: 500px;
             }
+        }
+        video {
+            top: -15px;
         }
     }
     .editoriales {
