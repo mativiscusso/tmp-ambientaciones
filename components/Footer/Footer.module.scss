@@ -6,6 +6,10 @@
     // background-color: $red;
     .items {
         padding: 1rem;
+        svg {
+            width: 30px;
+            height: 30px;
+        }
         .formLink {
             padding: 12px 16px;
             background-color: $red(255, 255, 255, 0.63);
@@ -21,6 +25,16 @@
             &:hover {
                 background-color: rgba(255, 255, 255, 0.8);
                 color: $black;
+            }
+        }
+        .socialBrand {
+            display: flex;
+            align-items: center;
+            padding: 4px 0;
+        }
+        a {
+            &:hover {
+                filter: invert(1);
             }
         }
     }

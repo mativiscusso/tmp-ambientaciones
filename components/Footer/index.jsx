@@ -1,7 +1,6 @@
 import Image from "next/image";
 import logo from "assets/svg/logo.svg";
-import instagram from "assets/svg/instagram.svg";
-import facebook from "assets/svg/facebook.svg";
+import InstagramIcon from "components/Icons/Instagram";
 import Link from "next/link";
 import styles from "./Footer.module.scss";
 
@@ -19,24 +18,15 @@ export default function Footer({ isHomeDesign }) {
                 </p>
                 <p>Calle falsa 123 - Rosario - Argentina</p>
                 <p>email@email.com</p>
-                <div style={{ display: "flex", alignItems: "center" }}>
-                    <Image
-                        src={instagram}
-                        width={30}
-                        height={30}
-                        alt="logo TMP"
-                    />
+                <div className={styles.socialBrand}>
+                    <InstagramIcon />
                     <Link href="https://www.instagram.com/tmpambientaciones">
                         <a>Organización de bodas</a>
                     </Link>
                 </div>
-                <div style={{ display: "flex", alignItems: "center" }}>
-                    <Image
-                        src={instagram}
-                        width={30}
-                        height={30}
-                        alt="logo TMP"
-                    />
+                <div className={styles.socialBrand}>
+                    <InstagramIcon />
+
                     <Link href="https://www.instagram.com/tmphomestaging/">
                         <a>Home staging</a>
                     </Link>
