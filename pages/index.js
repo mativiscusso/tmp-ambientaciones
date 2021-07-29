@@ -1,11 +1,10 @@
 import Image from "next/image";
-import headerImgDesktop from "assets/images/editorial.jpg";
 import styles from "../styles/Home.module.scss";
 import Accordion from "components/Accordion";
 import RockVector from "components/RockVector";
 import Layout from "components/Layout";
-import Link from "next/link";
 import Video from "components/Video";
+import Link from "next/link";
 import { fetchCategoryEvent } from "firebase/client";
 import EditorialesTitle from "components/CustomTitles/Editoriales";
 
@@ -18,17 +17,8 @@ export default function Home({ categories, editoriales }) {
                 <div className={styles.textHeader}>
                     <RockVector />
                 </div>
-                <video
-                    loop
-                    muted
-                    autoPlay
-                    playsinline
-                    preload="metadata"
-                    objectFit="cover"
-                >
-                    <source src={videoUrl} type="video/mp4" />
-                </video>
-                {/* <Video mainVideo={videoUrl} /> */}
+
+                <Video mainVideo={videoUrl} />
             </header>
             <main className={styles.container}>
                 <Accordion categories={categories} />
