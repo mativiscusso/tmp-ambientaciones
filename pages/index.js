@@ -18,7 +18,17 @@ export default function Home({ categories, editoriales }) {
                 <div className={styles.textHeader}>
                     <RockVector />
                 </div>
-                <Video mainVideo={videoUrl} />
+                <video
+                    loop
+                    muted
+                    autoPlay
+                    playsinline
+                    preload="metadata"
+                    objectFit="cover"
+                >
+                    <source src={videoUrl} type="video/mp4" />
+                </video>
+                {/* <Video mainVideo={videoUrl} /> */}
             </header>
             <main className={styles.container}>
                 <Accordion categories={categories} />
