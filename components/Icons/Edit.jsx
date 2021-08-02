@@ -1,9 +1,9 @@
 export default function EditIcon(props) {
     return (
         <svg
-            height={25}
+            height={21}
             viewBox="0 0 21 21"
-            width={25}
+            width={21}
             xmlns="http://www.w3.org/2000/svg"
             {...props}
         >
@@ -14,7 +14,7 @@ export default function EditIcon(props) {
                 strokeLinecap="round"
                 strokeLinejoin="round"
             >
-                <path d="M5.5 4.5h10v12a2 2 0 01-2 2h-6a2 2 0 01-2-2zm5-2a2 2 0 011.995 1.85l.005.15h-4a2 2 0 012-2zM3.5 4.5h14M8.5 7.5v8M12.5 7.5v8" />
+                <path d="M17 4a2.121 2.121 0 010 3l-9.5 9.5-4 1 1-3.944 9.504-9.552a2.116 2.116 0 012.864-.125zM9.5 17.5h8M15.5 6.5l1 1" />
             </g>
         </svg>
     );

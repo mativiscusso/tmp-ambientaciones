@@ -5,6 +5,7 @@ import UploadImages from "../UploadImages";
 import styles from "./EventForm.module.scss";
 import { useRouter } from "next/router";
 import Loading from "components/Loading";
+import { formatArrayImagesFromArticle } from "helpers";
 
 const INITIAL_STATE = {
     title: "",
@@ -12,7 +13,7 @@ const INITIAL_STATE = {
     category: "",
     images: "",
 };
-export default function EventForm({ admin }) {
+export default function EventForm({ admin, event }) {
     const [formData, setFormData] = useState(INITIAL_STATE);
     const [isSending, setIsSending] = useState(false);
     const [imagesUploaded, setImagesUploaded] = useState([]);
@@ -32,7 +33,15 @@ export default function EventForm({ admin }) {
     }, [formData, imagesUploaded]);
 
     const handleChange = (evt) => {
-        setFormData({ ...formData, [evt.target.name]: evt.target.value });
+        if (evt.target.name === "style") {
+            setFormData({
+                ...formData,
+                [evt.target.name]: evt.target.value,
+                title: evt.target.value,
+            });
+        } else {
+            setFormData({ ...formData, [evt.target.name]: evt.target.value });
+        }
     };
     const handleSubmit = (evt) => {
         evt.preventDefault();
@@ -43,6 +52,7 @@ export default function EventForm({ admin }) {
             description: formData.description,
             category: formData.category.toLowerCase(),
             images: [...imagesUploaded],
+            style: formData.style.toLowerCase() || "",
         })
             .then((result) => {
                 setIsSending(false);
@@ -59,7 +69,12 @@ export default function EventForm({ admin }) {
             <form onSubmit={handleSubmit} className={styles.form}>
                 <label htmlFor="title">
                     Titulo
-                    <input type="text" name="title" onChange={handleChange} />
+                    <input
+                        type="text"
+                        name="title"
+                        onChange={handleChange}
+                        defaultValue={`${formData?.title}  weeding collection`}
+                    />
                 </label>
                 <label htmlFor="title">
                     Descripcion
@@ -70,15 +85,38 @@ export default function EventForm({ admin }) {
                         onChange={handleChange}
                     />
                 </label>
-                <EventCategoryList admin={admin} handleChange={handleChange} />
-
+                <EventCategoryList
+                    admin={admin}
+                    handleChange={handleChange}
+                    categorySelected={event?.category}
+                />
+                {formData.category === "bodas" && (
+                    <select name="style" onChange={handleChange}>
+                        <option value="" selected disabled>
+                            Elige un estilo...
+                        </option>
+                        <option value="boho">Boho Wedding Collection</option>
+                        <option value="industrial">
+                            industrial wedding collection
+                        </option>
+                        <option value="european">
+                            european weddin collection
+                        </option>
+                    </select>
+                )}
+                <br />
                 <UploadImages
                     imagesUploaded={imagesUploaded}
                     setImagesUploaded={setImagesUploaded}
+                    imagesInArticleToEdit={
+                        event &&
+                        event.images &&
+                        formatArrayImagesFromArticle(event.images)
+                    }
                 />
                 <br />
                 <button
-                    disabled={isSending === true || !readyForSend}
+                    disabled={isSending === true}
                     style={{
                         display: "flex",
                         justifyContent: "center",

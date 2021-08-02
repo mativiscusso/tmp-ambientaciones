@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { onAuthStateChanged } from "firebase/client";
 import firebase from "firebase";
 
 export default function useAuth() {

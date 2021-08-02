@@ -61,6 +61,51 @@ $color-form-highlight2: #eeeeee2a;
             padding: 0 0.2rem;
         }
     }
+    .modal {
+        width: 340px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: $textFont;
+        text-align: center;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.33);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 5;
+        background-color: $black;
+        padding: 1rem 0;
+        border-radius: 15px 0 15px 0;
+        p {
+            font-size: 1.2rem;
+            color: $white;
+        }
+        button {
+            background: transparent;
+            padding: 8px;
+            margin: 1rem;
+            border: 0;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-family: $textFont;
+            font-size: 1.1rem;
+            &:hover {
+                cursor: pointer;
+            }
+            &:first-child {
+                border: 1px solid $red;
+                color: $red;
+            }
+            &:last-child {
+                background-color: $red;
+                color: $white;
+            }
+        }
+        -webkit-animation: fade-in 0.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+        animation: fade-in 0.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+    }
 }
 @media (min-width: $screen-lg) {
     .tableWrapper {
@@ -81,4 +126,21 @@ $color-form-highlight2: #eeeeee2a;
 }
 
 @media (min-width: $screen-xl) {
+}
+
+@-webkit-keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

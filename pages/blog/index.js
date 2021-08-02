@@ -10,7 +10,7 @@ function BlogPage({ posts }) {
     return (
         <Layout>
             <main className={styles.blog}>
-                <HeaderPages title="Blog" />
+                <HeaderPages title="blog" />
                 <div className={styles.container}>
                     {posts &&
                         posts.map((post) => (
@@ -20,7 +20,6 @@ function BlogPage({ posts }) {
                                 title={post.title}
                                 date={post.createdAt}
                                 content={post.content}
-                                images={post.images}
                             />
                         ))}
                 </div>

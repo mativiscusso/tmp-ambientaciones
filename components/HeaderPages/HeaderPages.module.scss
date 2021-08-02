@@ -62,7 +62,7 @@
         margin-bottom: 0;
         .textHeader {
             svg {
-                width: 40%;
+                width: 30%;
                 bottom: 4.5rem;
                 left: 2rem;
             }
@@ -96,7 +96,10 @@
         .textHeader {
             h1,
             h2 {
-                left: 20%;
+                font-size: 4.5rem;
+            }
+            svg {
+                width: 25%;
             }
         }
     }

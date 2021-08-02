@@ -12,3 +12,9 @@ export default function formatArrayEventsToGallery(array) {
     });
     return gallery;
 }
+
+export function formatArrayImagesFromArticle(images) {
+    return images.map((image, i) => {
+        return { preview: image, id: i };
+    });
+}

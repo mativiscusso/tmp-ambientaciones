@@ -1,5 +1,18 @@
 import Link from "next/link";
 import styles from "./CardEvents.module.scss";
+import IndustrialTitle from "components/CustomTitles/Industrial";
+import EuropeanTitle from "components/CustomTitles/European";
+import BohoTitle from "components/CustomTitles/Boho";
+
+function titleAccordion(title) {
+    const items = {
+        boho: <BohoTitle color="#fff" />,
+        industrial: <EuropeanTitle color="#fff" />,
+        european: <IndustrialTitle color="#fff" />,
+    };
+
+    return items[title] ? items[title] : <p>{title}</p>;
+}
 
 export default function CardEvents({ events }) {
     return (
@@ -18,7 +31,7 @@ export default function CardEvents({ events }) {
                         >
                             <div className={styles.bg}></div>
 
-                            <p>{event.title}</p>
+                            <>{titleAccordion(event.title)}</>
                         </a>
                     </Link>
                 ))}

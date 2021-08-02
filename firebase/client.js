@@ -52,13 +52,14 @@ export const onAuthStateChanged = () => {
     });
 };
 
-export const addEvent = ({ title, description, category, images }) => {
+export const addEvent = ({ title, description, category, images, style }) => {
     return db.collection("events").add({
         title,
         description,
         category,
         createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
         images,
+        style,
     });
 };
 
@@ -100,7 +101,12 @@ export const fetchFilterEvents = (fieldToFilter, valueToFilter) => {
                 const data = doc.data();
                 const id = doc.id;
                 const { createdAt } = data;
-                return { ...data, id, createdAt: +createdAt.toDate() };
+                return {
+                    ...data,
+                    id,
+                    createdAt: +createdAt.toDate(),
+                    updatedAt: null,
+                };
             });
         })
         .catch((err) => {
@@ -118,12 +124,10 @@ export const fetchLastestPosts = () => {
                 const data = doc.data();
                 const id = doc.id;
                 const { createdAt } = data;
-                return { ...data, id, createdAt: +createdAt.toDate() };
+                return { ...data, id, createdAt: +createdAt.toDate() || null };
             });
         })
-        .catch((err) => {
-            console.log(err);
-        });
+        .catch((error) => console.error("Error getting posts: ", error));
 };
 
 export const fetchCategoryEvent = () => {
@@ -183,9 +187,8 @@ export const uploadMultipleImages = async (images) => {
     }
 };
 
-export const deleteDocumentOfCollection = async (id, collectionName) => {
-    const result = await db.collection(collectionName).doc(id).delete();
-    return result;
+export const deleteDocumentOfCollection = (id, collectionName) => {
+    return db.collection(collectionName).doc(id).delete();
 };
 
 export const getDocumentOfCollection = (id, collectionName) => {
@@ -197,7 +200,12 @@ export const getDocumentOfCollection = (id, collectionName) => {
             const data = result.data();
             const id = result.id;
             const { createdAt } = data;
-            return { ...data, id, createdAt: +createdAt.toDate() };
+            return {
+                ...data,
+                id,
+                createdAt: +createdAt.toDate(),
+                updatedAt: null,
+            };
         })
 
         .catch((err) => {
@@ -206,6 +214,31 @@ export const getDocumentOfCollection = (id, collectionName) => {
 };
 
 export const setDocumentOfCollection = async (id, collectionName, data) => {
-    const result = await db.collection(collectionName).doc(id).set(data);
-    return result;
+    return db
+        .collection(collectionName)
+        .doc(id)
+        .set(
+            {
+                ...data,
+                updatedAt: firebase.firestore.Timestamp.fromDate(new Date()),
+            },
+            { merge: true }
+        );
+};
+
+export const addNewPost = (blogPost) => {
+    if (blogPost.id) {
+        return db
+            .collection("posts")
+            .doc(blogPost.id)
+            .update({
+                ...blogPost,
+                createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+            });
+    } else {
+        return db.collection("posts").add({
+            ...blogPost,
+            createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+        });
+    }
 };

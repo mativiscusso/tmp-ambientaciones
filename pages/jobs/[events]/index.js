@@ -24,7 +24,9 @@ function EventsPage({ events, eventQuery, category }) {
                         <p>Aún no hay eventos cargados...</p>
                     </div>
                 )}
-                <CardEvents events={events} />
+                <div className={styles.container}>
+                    <CardEvents events={events} />
+                </div>
             </main>
         </Layout>
     );

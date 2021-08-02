@@ -22,13 +22,17 @@
             z-index: 2;
             text-transform: uppercase;
         }
+        svg {
+            z-index: 1;
+        }
         .bg {
-            background: rgba(0, 0, 0, 0.596);
+            background: rgba(0, 0, 0, 0.8);
             width: 100%;
             height: 100%;
             position: absolute;
             z-index: 1;
             top: 0;
+            transition: background 0.2s ease;
         }
     }
 }
@@ -36,8 +40,18 @@
 @media (min-width: $screen-lg) {
     .wrapper {
         .card {
-            width: 30%;
+            width: 28%;
             height: 250px;
+            padding: 4rem;
+            p {
+                font-size: 2rem;
+                letter-spacing: 2px;
+            }
+            &:hover {
+                .bg {
+                    background: rgba(0, 0, 0, 0.4);
+                }
+            }
         }
     }
 }

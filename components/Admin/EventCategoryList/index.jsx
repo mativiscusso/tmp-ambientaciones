@@ -1,30 +1,34 @@
 import { useEffect, useState } from "react";
-import { fetchCategoryEvent } from "../../../firebase/client";
+import { fetchCategoryEvent } from "firebase/client";
 
-export default function EventCategoryList({ handleChange, admin }) {
+export default function EventCategoryList({ handleChange, categorySelected }) {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        admin &&
-            fetchCategoryEvent()
-                .then(setCategories)
-                .catch((err) => console.log(err));
-    }, [admin]);
+        fetchCategoryEvent()
+            .then(setCategories)
+            .catch((err) => console.log(err));
+    }, []);
 
     return (
-        <label htmlFor="title">
+        <label htmlFor="category">
             Categoria
             {categories && (
-                <select
-                    name="category"
-                    onChange={handleChange}
-                    defaultValue="choice"
-                >
-                    <option selected disabled value="choice">
+                <select name="category" onChange={handleChange}>
+                    <option
+                        disabled
+                        selected={!categorySelected}
+                        value="choice"
+                    >
                         Seleccione una categoria...
                     </option>
                     {categories.map((category) => (
-                        <option key={category.id}>{category.name}</option>
+                        <option
+                            key={category.name}
+                            selected={category.name === categorySelected}
+                        >
+                            {category.name}
+                        </option>
                     ))}
                 </select>
             )}

@@ -2,17 +2,24 @@
 
 .nosotros {
     background-color: $red;
-    p {
-        padding: 0.5rem 1rem;
-        font-family: $textFont;
-        color: $white;
+    .container {
+        max-width: 1500px;
+        padding: 0 1.2rem;
+        p {
+            font-family: $textFont;
+            color: $white;
+        }
     }
 }
 
 @media (min-width: $screen-md) {
     .nosotros {
-        p {
-            font-size: 1.2rem;
+        .container {
+            padding: 0 4rem 4rem 4rem;
+
+            p {
+                font-size: 1.3rem;
+            }
         }
     }
 }

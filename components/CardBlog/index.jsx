@@ -2,20 +2,11 @@ import useTimeAgo from "hooks/useTimeAgo";
 import Link from "next/link";
 import styles from "./CardBlog.module.scss";
 
-export default function CardBlog({ id, title, content, date, images }) {
+export default function CardBlog({ id, title, date }) {
     return (
         <div className={styles.cardBlog}>
-            <section
-                className={styles.image}
-                style={{
-                    backgroundImage: `url(${images && images[0]} )`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                }}
-            ></section>
             <section className={styles.body}>
                 <h2>{title}</h2>
-                <p>{content}</p>
                 <time>{useTimeAgo(date)}</time>
                 <Link href={`/blog/${id}`}>
                     <a>

@@ -1,18 +1,23 @@
 import { useState, useEffect } from "react";
 import {
+    addNewPost,
     deleteDocumentOfCollection,
     fetchLastestPosts,
-    getDocumentOfCollection,
 } from "firebase/client";
 import styles from "../EventList/Table.module.scss";
-import DeleteIcon from "components/Icons/Delete";
-import Tooltip from "components/Tooltip";
 import Loading from "components/Loading";
 import { useRouter } from "next/router";
+import BlogPosts from "components/Admin/RichText/BlogPosts";
+import BlogPostEditor from "../RichText/BlogPostEditor";
 
-export default function PostList({ admin }) {
+export default function PostList({
+    admin,
+    postEditorVisible,
+    setPostEditorVisible,
+}) {
     const [posts, setPosts] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [editPostData, setEditPostData] = useState(null);
 
     const router = useRouter();
 
@@ -20,81 +25,69 @@ export default function PostList({ admin }) {
         setIsLoading(true);
         fetchLastestPosts()
             .then((result) => {
+                console.log(result);
                 setPosts(result);
                 setIsLoading(false);
             })
             .catch((err) => console.log(err));
     }, []);
 
-    const handleDelete = (evt) => {
-        const id = evt.currentTarget.id;
-        deleteDocumentOfCollection(id, "posts");
+    const handleDelete = async (data) => {
+        await deleteDocumentOfCollection(data.id, "posts");
         router.reload();
     };
-    const handleEdit = async (evt) => {
-        const id = evt.currentTarget.id;
-        const event = await getDocumentOfCollection(id, "posts");
+
+    const handleEditPost = (data) => {
+        setEditPostData(data);
+        setPostEditorVisible(true);
     };
 
-    /* Implement function to format date in spanish */
-    const formatDate = (date) => {
-        const d = new Date(date);
-        const months = [
-            "Enero",
-            "Febrero",
-            "Marzo",
-            "Abril",
-            "Mayo",
-            "Junio",
-            "Julio",
-            "Agosto",
-            "Septiembre",
-            "Octubre",
-            "Noviembre",
-            "Diciembre",
-        ];
-        const day = d.getDate();
-        const month = months[d.getMonth()];
-        const year = d.getFullYear();
-        return `${day} - ${month} - ${year}`;
+    const handleUpsertPost = (blogPost) => {
+        addNewPost(blogPost)
+            .then(() => {
+                router.reload();
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+    const handleCloseEditor = () => {
+        setEditPostData(null);
+        setPostEditorVisible(false);
     };
 
     return (
         <div className={styles.tableWrapper}>
             <h2>Posteos</h2>
-            <table className={styles.table}>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Titulo</th>
-                        <th>Fecha</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                {isLoading && <Loading />}
+            {posts && (
+                <table className={styles.table}>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Titulo</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    {isLoading && <Loading />}
 
-                <tbody>
-                    {posts &&
-                        posts.map((post, i) => (
-                            <tr key={post.id}>
-                                <th>{i + 1}</th>
-                                <th>{post.title}</th>
-                                <th>{formatDate(post.createdAt)}</th>
-                                <th>
-                                    {/* <button id={post.id} onClick={handleEdit}>
-                                        Edit
-                                    </button> */}
-
-                                    <button id={post.id} onClick={handleDelete}>
-                                        <Tooltip text="Eliminar">
-                                            <DeleteIcon />
-                                        </Tooltip>
-                                    </button>
-                                </th>
-                            </tr>
-                        ))}
-                </tbody>
-            </table>
+                    <tbody>
+                        {posts && (
+                            <BlogPosts
+                                data={posts}
+                                handleEditPost={handleEditPost}
+                                handleDeletePost={handleDelete}
+                            />
+                        )}
+                    </tbody>
+                </table>
+            )}
+            <BlogPostEditor
+                visible={postEditorVisible}
+                editPostData={editPostData}
+                onComplete={handleUpsertPost}
+                onClose={handleCloseEditor}
+            />
         </div>
     );
 }

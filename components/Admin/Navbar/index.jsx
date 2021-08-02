@@ -8,7 +8,7 @@ import UserIcon from "components/Icons/User";
 import logoTmp from "assets/svg/logo.svg";
 import Image from "next/image";
 
-export default function NavbarAdmin() {
+export default function NavbarAdmin({ setPostEditorVisible }) {
     const [loading, setLoading] = useState(false);
 
     const router = useRouter();
@@ -42,9 +42,7 @@ export default function NavbarAdmin() {
                 <Link href="/admin/create/events">
                     <a>Crear Eventos</a>
                 </Link>
-                <Link href="/admin/create/posts">
-                    <a>Crear Posteos</a>
-                </Link>
+                <a onClick={() => setPostEditorVisible(true)}>Crear Posteos</a>
                 <Link href="/">
                     <a>Ver sitio</a>
                 </Link>

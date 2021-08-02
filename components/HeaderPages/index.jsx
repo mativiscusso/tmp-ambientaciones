@@ -3,6 +3,9 @@ import BodasTitle from "components/CustomTitles/Bodas";
 import CorporativosTitle from "components/CustomTitles/Corporativos";
 import SocialTitle from "components/CustomTitles/Social";
 import EditorialTitle from "components/CustomTitles/Editoriales";
+import IndustrialTitle from "components/CustomTitles/Industrial";
+import EuropeanTitle from "components/CustomTitles/European";
+import BohoTitle from "components/CustomTitles/Boho";
 
 function titleAccordion(title) {
     const items = {
@@ -10,7 +13,12 @@ function titleAccordion(title) {
         corporativos: <CorporativosTitle color="#fff" />,
         social: <SocialTitle color="#fff" />,
         editoriales: <EditorialTitle color="#fff" />,
+        boho: <BohoTitle color="#fff" />,
+        industrial: <EuropeanTitle color="#fff" />,
+        european: <IndustrialTitle color="#fff" />,
         interiorismo: <h2>WE DO HOMES</h2>,
+        nosotros: <h2>NOSOTROS</h2>,
+        blog: <h2>BLOG</h2>,
     };
 
     return items[title] ? items[title] : <h1>{title}</h1>;

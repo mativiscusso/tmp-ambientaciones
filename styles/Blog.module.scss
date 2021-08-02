@@ -3,14 +3,16 @@
 .blog {
     background-color: $red;
     min-width: 100vw;
+    .container {
+        padding: 0 1rem;
+    }
 }
 
-// @media (min-width: $screen-md) {
-// }
 @media (min-width: $screen-lg) {
-    .container {
-        max-width: 1200px;
-        margin: auto;
+    .blog {
+        .container {
+            padding: 1rem 3rem 5rem;
+        }
     }
 }
 
