@@ -1,18 +1,28 @@
 .editor__container {
-  height: inherit;
+    height: inherit;
+    height: calc(100% - 48px);
 
-  border-radius: 4px;
-  border: 1px solid #ccc;
+    border-radius: 4px;
+    border: 1px solid #ccc;
 }
 
 .editor__container--toolbar {
-  height: 70px;
-  margin-bottom: 0 !important;
+    height: 70px;
+    margin-bottom: 0 !important;
 }
 
 .editor__container--text-field {
-  height: calc(100% - 70px) !important;
-  overflow: scroll !important;
+    margin-top: 50px;
+    overflow: scroll !important;
 
-  background-color: white;
+    background-color: white;
+}
+
+@media (min-width: 1280px) {
+    .editor__container {
+        height: 80%;
+    }
+    .editor__container--text-field {
+        margin-top: 0px;
+    }
 }
