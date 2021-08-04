@@ -42,7 +42,9 @@ export default function BlogPostEditor({
         <div className="blog-post-editor__wrap">
             <div className="blog-post-editor__container">
                 <h1 className="text-center">
-                    {`${editPostData ? "Update" : "Create"} Blog Post`}
+                    {`${
+                        editPostData ? "Editar" : "Crear"
+                    } posteos para nuestro blog`}
                 </h1>
 
                 <h1
@@ -54,7 +56,7 @@ export default function BlogPostEditor({
 
                 <div className="blog-post-editor__title-container">
                     <div className="blog-post-editor__title-text">
-                        Post Title:
+                        Título del post:
                     </div>
 
                     <input
@@ -76,7 +78,7 @@ export default function BlogPostEditor({
                         className="blog-post-editor__button"
                         onClick={handleSubmit}
                     >
-                        {`${editPostData ? "Update" : "Create"} Post`}
+                        {`${editPostData ? "Editar" : "Crear"}`}
                     </button>
                 </div>
             </div>

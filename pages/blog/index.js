@@ -12,7 +12,7 @@ function BlogPage({ posts }) {
             <main className={styles.blog}>
                 <HeaderPages title="blog" />
                 <div className={styles.container}>
-                    {posts &&
+                    {posts && posts.length > 0 ? (
                         posts.map((post) => (
                             <CardBlog
                                 key={post.id}
@@ -21,7 +21,12 @@ function BlogPage({ posts }) {
                                 date={post.createdAt}
                                 content={post.content}
                             />
-                        ))}
+                        ))
+                    ) : (
+                        <div>
+                            <h1>Aun no hay posteos</h1>
+                        </div>
+                    )}
                 </div>
             </main>
         </Layout>
@@ -38,7 +43,7 @@ export async function getServerSideProps() {
     } catch (error) {
         console.log(error);
         return {
-            props: { posts: [] },
+            props: { posts: undefined },
         };
     }
 }

@@ -39,19 +39,13 @@ export default function NavbarAdmin({ setPostEditorVisible }) {
                         />
                     </a>
                 </Link>
-                <Link href="/admin/create/events">
-                    <a>Crear Eventos</a>
-                </Link>
-                <a onClick={() => setPostEditorVisible(true)}>Crear Posteos</a>
-                <Link href="/">
-                    <a>Ver sitio</a>
-                </Link>
-            </nav>
-            <nav className={styles.secondNav}>
                 <div>
                     <UserIcon />
                     <strong>Hola Admin</strong>
                 </div>
+                <Link href="/">
+                    <a>Ver sitio</a>
+                </Link>
 
                 <button
                     onClick={handleLogout}
@@ -65,6 +59,8 @@ export default function NavbarAdmin({ setPostEditorVisible }) {
                     CERRAR SESIÓN
                 </button>
             </nav>
+            {/* <nav className={styles.secondNav}>
+            </nav> */}
         </>
     );
 }

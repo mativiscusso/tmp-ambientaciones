@@ -58,8 +58,9 @@
 
 .blog-post-editor__button {
     font-size: 20px;
-
-    margin-top: 36px;
+    top: 90% !important;
+    right: 5% !important;
+    height: 40px !important;
 }
 
 @media (min-width: 1280px) {

@@ -8,6 +8,30 @@ $color-form-highlight2: #eeeeee2a;
 
 .tableWrapper {
     overflow-x: scroll;
+    position: relative;
+    margin-bottom: 2rem;
+    button,
+    a {
+        position: absolute;
+        top: 5px;
+        right: 10%;
+        background: transparent;
+        padding: 8px;
+        margin: 0 1rem;
+        border: 0;
+        border: 2px solid #000;
+        font-family: $titleFont;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-size: 14px;
+        width: 140px;
+        &:hover {
+            cursor: pointer;
+            background-color: #000;
+            color: #fff;
+        }
+    }
     h2 {
         font-family: $titleFont;
         color: $white;

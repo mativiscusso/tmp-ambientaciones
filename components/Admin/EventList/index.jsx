@@ -6,6 +6,7 @@ import EditIcon from "components/Icons/Edit";
 import Tooltip from "components/Tooltip";
 import Loading from "components/Loading";
 import router from "next/router";
+import Link from "next/link";
 
 export default function EventList({ admin }) {
     const [events, setEvents] = useState([]);
@@ -48,7 +49,9 @@ export default function EventList({ admin }) {
     return (
         <div className={styles.tableWrapper}>
             <h2>Eventos</h2>
-
+            <Link href="/admin/create/events">
+                <a>Crear Eventos</a>
+            </Link>
             <table className={styles.table}>
                 <thead>
                     <tr>

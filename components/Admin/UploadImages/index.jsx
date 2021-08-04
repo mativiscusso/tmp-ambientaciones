@@ -53,6 +53,8 @@ export default function UploadImage({ imagesUploaded, setImagesUploaded }) {
                 multiple
                 onChange={onFileChange}
                 style={{ visibility: "hidden" }}
+                required
+                accept=".jpg, .jpeg, .png"
             />
             <div className={styles.imagesZone}>
                 {files.length > 0 &&

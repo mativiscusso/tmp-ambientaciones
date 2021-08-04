@@ -10,11 +10,7 @@ import { useRouter } from "next/router";
 import BlogPosts from "components/Admin/RichText/BlogPosts";
 import BlogPostEditor from "../RichText/BlogPostEditor";
 
-export default function PostList({
-    admin,
-    postEditorVisible,
-    setPostEditorVisible,
-}) {
+export default function PostList({ postEditorVisible, setPostEditorVisible }) {
     const [posts, setPosts] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [editPostData, setEditPostData] = useState(null);
@@ -59,6 +55,9 @@ export default function PostList({
     return (
         <div className={styles.tableWrapper}>
             <h2>Posteos</h2>
+            <button onClick={() => setPostEditorVisible(true)}>
+                Crear Post
+            </button>
             {posts && (
                 <table className={styles.table}>
                     <thead>

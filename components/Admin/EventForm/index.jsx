@@ -73,7 +73,7 @@ export default function EventForm({ admin, event }) {
                         type="text"
                         name="title"
                         onChange={handleChange}
-                        defaultValue={`${formData?.title}  weeding collection`}
+                        defaultValue={formData?.title}
                     />
                 </label>
                 <label htmlFor="title">
