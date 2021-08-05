@@ -19,7 +19,7 @@ export default function Home({ categories, editoriales }) {
                 </div>
 
                 {/* <Video mainVideo={videoUrl} /> */}
-                <video loop muted autoPlay playsInline preload="metadata">
+                <video loop muted autoPlay playsInline>
                     <source src={videoUrl} type="video/mp4" />
                 </video>
             </header>
