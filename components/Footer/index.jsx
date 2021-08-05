@@ -77,13 +77,13 @@ export default function Footer({ isHomeDesign }) {
                     </a>
 
                     <a
-                        href="https://docs.google.com/forms/d/e/1FAIpQLSc-4XwzzyeV-myNMBP3R1xSZt5EHMI9y08TSvL4I4UVNIr2hQ/viewform?vc=0&c=0&w=1&flr=0
+                        href="https://docs.google.com/forms/d/173JJxm-RmJEJf98XQIqvpx3MADfPJ45qaUgUP_vznbI/viewform?edit_requested=true
 "
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.formLink}
                     >
-                        Presupuestar home
+                        Presupuestar quince
                     </a>
                 </div>
             </footer>

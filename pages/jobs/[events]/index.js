@@ -32,7 +32,7 @@ function EventsPage({ events, eventQuery, category }) {
     );
 }
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
     const { events: eventQuery } = params;
     try {
         const events = await fetchFilterEvents("category", eventQuery);
@@ -47,17 +47,5 @@ export async function getStaticProps({ params }) {
         return { props: { events: [] } };
     }
 }
-export async function getStaticPaths() {
-    try {
-        const categories = await fetchCategoryEvent();
-        return {
-            paths: categories.map((category) => ({
-                params: { events: category.name },
-            })),
-            fallback: false, // See the "fallback" section below
-        };
-    } catch (error) {
-        console.log(error);
-    }
-}
+
 export default EventsPage;
