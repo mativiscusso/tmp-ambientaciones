@@ -55,7 +55,10 @@ export default function PostList({ postEditorVisible, setPostEditorVisible }) {
     return (
         <div className={styles.tableWrapper}>
             <h2>Posteos</h2>
-            <button onClick={() => setPostEditorVisible(true)}>
+            <button
+                className={styles.buttonTable}
+                onClick={() => setPostEditorVisible(true)}
+            >
                 Crear Post
             </button>
             {posts && (

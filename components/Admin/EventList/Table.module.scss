@@ -10,14 +10,13 @@ $color-form-highlight2: #eeeeee2a;
     overflow-x: scroll;
     position: relative;
     margin-bottom: 2rem;
-    button,
-    a {
+    .buttonTable {
         position: absolute;
         top: 5px;
-        right: 10%;
+        right: 0;
         background: transparent;
         padding: 8px;
-        margin: 0 1rem;
+        // margin: 0 1rem;
         border: 0;
         border: 2px solid #000;
         font-family: $titleFont;
@@ -86,7 +85,7 @@ $color-form-highlight2: #eeeeee2a;
         }
     }
     .modal {
-        width: 340px;
+        width: 320px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -94,7 +93,7 @@ $color-form-highlight2: #eeeeee2a;
         font-family: $textFont;
         text-align: center;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.33);
-        position: absolute;
+        position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -139,6 +138,9 @@ $color-form-highlight2: #eeeeee2a;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        .buttonTable {
+            right: 10%;
+        }
         h2 {
             font-size: 2.2rem;
         }

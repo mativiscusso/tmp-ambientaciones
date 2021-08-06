@@ -50,7 +50,7 @@ export default function EventList({ admin }) {
         <div className={styles.tableWrapper}>
             <h2>Eventos</h2>
             <Link href="/admin/create/events">
-                <a>Crear Eventos</a>
+                <a className={styles.buttonTable}>Crear Eventos</a>
             </Link>
             <table className={styles.table}>
                 <thead>

@@ -12,6 +12,7 @@ const INITIAL_STATE = {
     description: "",
     category: "",
     images: "",
+    style: "",
 };
 export default function EventForm({ admin, event }) {
     const [formData, setFormData] = useState(INITIAL_STATE);
@@ -23,11 +24,7 @@ export default function EventForm({ admin, event }) {
 
     useEffect(() => {
         const { title, category } = formData;
-        if (
-            title.length > 2 &&
-            category.length > 2 &&
-            imagesUploaded.length > 0
-        ) {
+        if (title.length > 2 && category.length > 2) {
             setReadyForSend(true);
         }
     }, [formData, imagesUploaded]);
@@ -116,7 +113,7 @@ export default function EventForm({ admin, event }) {
                 />
                 <br />
                 <button
-                    disabled={isSending === true}
+                    disabled={isSending === true || readyForSend === false}
                     style={{
                         display: "flex",
                         justifyContent: "center",
