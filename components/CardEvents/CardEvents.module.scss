@@ -6,10 +6,8 @@
     .card {
         position: relative;
         width: 45%;
-        margin: 2.5%;
-        &:first-child {
-            margin-left: 0;
-        }
+        margin: 2.5% 2.5% 2.5% 0;
+
         height: 150px;
         background-position: center;
         background-size: cover;
@@ -45,7 +43,7 @@
 @media (min-width: $screen-lg) {
     .wrapper {
         .card {
-            width: 28%;
+            width: 30%;
             height: 250px;
             padding: 4rem;
             p {
