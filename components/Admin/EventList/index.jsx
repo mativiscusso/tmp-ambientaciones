@@ -109,7 +109,7 @@ export default function EventList({ admin }) {
                 </tbody>
             </table>
             <p>
-                Mostrar eventos ( {rangePage.init} - {rangePage.end} )
+                Mostrar eventos ( {rangePage.init + 1} - {rangePage.end} )
             </p>
             <div>
                 <button

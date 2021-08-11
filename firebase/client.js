@@ -156,7 +156,7 @@ export const uploadMultipleImages = async (images) => {
     const promises = [];
     const imagesURL = [];
 
-    images.forEach((file) => {
+    images.forEach((file, position) => {
         const uploadTask = firebase
             .storage()
             .ref()
@@ -175,7 +175,7 @@ export const uploadMultipleImages = async (images) => {
             async () => {
                 const downloadURL =
                     await uploadTask.snapshot.ref.getDownloadURL();
-                imagesURL.push(downloadURL);
+                imagesURL[position] = downloadURL;
             }
         );
     });
