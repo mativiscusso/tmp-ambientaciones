@@ -10,7 +10,9 @@ function EventPage({ event }) {
         <Layout>
             <main className={styles.events}>
                 <HeaderPages title={event.title} />
-
+                {event.description && (
+                    <p className={styles.description}>{event.description}</p>
+                )}
                 <GalleryImages
                     photos={formatArrayEventsToGallery(event.images)}
                 />

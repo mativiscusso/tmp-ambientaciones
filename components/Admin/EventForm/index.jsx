@@ -97,7 +97,10 @@ export default function EventForm({ admin, event }) {
                             industrial wedding collection
                         </option>
                         <option value="european">
-                            european weddin collection
+                            european wedding collection
+                        </option>
+                        <option value="greenery">
+                            greenery wedding collection
                         </option>
                     </select>
                 )}
@@ -110,6 +113,7 @@ export default function EventForm({ admin, event }) {
                         event.images &&
                         formatArrayImagesFromArticle(event.images)
                     }
+                    isRequired={true}
                 />
                 <br />
                 <button

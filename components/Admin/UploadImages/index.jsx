@@ -4,7 +4,11 @@ import { uploadMultipleImages } from "firebase/client";
 import styles from "./UploadImage.module.scss";
 import Loading from "components/Loading";
 
-export default function UploadImage({ imagesUploaded, setImagesUploaded }) {
+export default function UploadImage({
+    imagesUploaded,
+    setImagesUploaded,
+    isRequired,
+}) {
     const [files, setFiles] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -53,13 +57,13 @@ export default function UploadImage({ imagesUploaded, setImagesUploaded }) {
                 multiple
                 onChange={onFileChange}
                 style={{ visibility: "hidden" }}
-                required
+                required={isRequired}
                 accept=".jpg, .jpeg, .png"
             />
             <div className={styles.imagesZone}>
                 {files.length > 0 &&
                     files.map((img, i) => (
-                        <div key={i} styles={{ position: "relative" }}>
+                        <div key={i} style={{ position: "relative" }}>
                             <a
                                 onClick={handleDeleteImage}
                                 id={img.id}
@@ -70,7 +74,7 @@ export default function UploadImage({ imagesUploaded, setImagesUploaded }) {
                             <img
                                 src={img.preview}
                                 alt={img.name}
-                                style={{ width: 40 }}
+                                style={{ width: 90 }}
                             />
                         </div>
                     ))}

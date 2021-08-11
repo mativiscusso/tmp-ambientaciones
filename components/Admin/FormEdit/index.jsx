@@ -150,6 +150,7 @@ export default function FormEdit({ event }) {
                         event.images &&
                         formatArrayImagesFromArticle(event.images)
                     }
+                    isRequired={false}
                 />
                 <br />
                 <button

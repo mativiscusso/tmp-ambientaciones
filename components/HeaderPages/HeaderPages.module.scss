@@ -63,14 +63,15 @@
         .textHeader {
             svg {
                 width: 30%;
-                bottom: 4.5rem;
+                bottom: 0;
                 left: 2rem;
             }
             h1,
             h2 {
-                bottom: 4rem;
-                left: 4rem;
+                bottom: 0;
+                left: 3rem;
                 font-size: 4rem;
+                margin: 0;
             }
 
             p {
@@ -80,7 +81,7 @@
             }
         }
         .imgHeaderDesktop {
-            height: 420px;
+            height: 320px;
         }
     }
     .container {
