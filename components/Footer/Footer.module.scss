@@ -26,15 +26,15 @@
                 color: $black;
             }
         }
-        .socialBrand {
-            display: flex;
-            align-items: center;
-            padding: 4px 0;
-        }
         a {
             &:hover {
                 filter: invert(1);
             }
+        }
+        .socialBrand {
+            display: flex !important;
+            align-items: center !important;
+            padding: 4px 0 !important;
         }
     }
     .marca {

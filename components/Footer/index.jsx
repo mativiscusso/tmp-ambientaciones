@@ -24,19 +24,19 @@ export default function Footer({ isHomeDesign }) {
                         />
                         &nbsp; ambientaciones
                     </p>
-                    <p>Calle falsa 123 - Rosario - Argentina</p>
-                    <p>email@email.com</p>
-                    <div className={styles.socialBrand}>
+                    <p>Cordoba 2035 - Rosario - Argentina</p>
+                    <p>info@tmpambientaciones.com</p>
+                    <section className={styles.socialBrand}>
                         <InstagramIcon />
                         <Link href="https://www.instagram.com/tmpambientaciones">
-                            <a>Organización de bodas</a>
+                            <a>TMP Ambientaciones</a>
                         </Link>
-                    </div>
+                    </section>
                     <div className={styles.socialBrand}>
                         <InstagramIcon />
 
                         <Link href="https://www.instagram.com/tmphomestaging/">
-                            <a>Home staging</a>
+                            <a>TMP Home staging</a>
                         </Link>
                     </div>
                 </div>
