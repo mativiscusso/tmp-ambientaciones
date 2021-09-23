@@ -1,6 +1,6 @@
-import Link from "next/link";
-import Image from "next/image";
 import logoTmp from "assets/svg/logo.svg";
+import Image from "next/image";
+import Link from "next/link";
 import styles from "./Navbar.module.scss";
 
 export default function Navlinks({ isMobile }) {
@@ -37,9 +37,13 @@ export default function Navlinks({ isMobile }) {
             )}
 
             <li>
-                <Link href="#contacto">
-                    <a>Contacto</a>
-                </Link>
+                <a
+                    href="http://wa.link/3t01jp"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    Contacto
+                </a>
             </li>
             <li className={styles.interiorismoBtn}>
                 <Link href="/jobs/interiorismo">

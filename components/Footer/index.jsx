@@ -1,6 +1,6 @@
-import Image from "next/image";
 import logo from "assets/svg/logo.svg";
 import InstagramIcon from "components/Icons/Instagram";
+import Image from "next/image";
 import Link from "next/link";
 import styles from "./Footer.module.scss";
 
@@ -52,9 +52,13 @@ export default function Footer({ isHomeDesign }) {
                         </Link>
                     </p>
                     <p>
-                        <Link href="/#contacto">
-                            <a>Contacto</a>
-                        </Link>
+                        <a
+                            href="https://wa.link/3t01jp"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            Contacto
+                        </a>
                     </p>
                     <p>
                         <Link href="/jobs/interiorismo">
